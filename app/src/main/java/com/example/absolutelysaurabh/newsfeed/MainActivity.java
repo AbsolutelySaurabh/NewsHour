@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     //Here we need the URL to extract JSON news
     //Use AllCaps for a constant.
-    private static final String USGS_REQUEST_URL = "https://newsapi.org/v1/articles?source=the-hindu&sortBy=latest&apiKey=ead2ef7ff6fd4231a07398f003e24436";
+    private static final String USGS_REQUEST_URL = "PASTE YOUR API KEY HERE";
     //Adapter for the list of the earthquakes
     private NewsAdapter newsAdapter;
 
