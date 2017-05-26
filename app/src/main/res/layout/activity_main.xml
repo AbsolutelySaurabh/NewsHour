@@ -1,17 +1,19 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
     <ListView
         android:id="@+id/list"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#212121"
-        android:dividerHeight="0dp"/>
+        android:footerDividersEnabled="true"
+        />
 
     <!-- Empty view is only visible when the list has no items. -->
+
     <TextView
         android:id="@+id/empty_view"
         android:layout_width="wrap_content"
@@ -30,4 +32,5 @@
 
 
 
-</RelativeLayout>
+
+</FrameLayout>

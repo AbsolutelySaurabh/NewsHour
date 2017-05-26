@@ -1,15 +1,8 @@
 package com.example.absolutelysaurabh.newsfeed;
 
-import java.util.List;
-
-/**
- * Created by absolutelysaurabh on 31/3/17.
- */
-
-
 import android.text.TextUtils;
-import android.util.EventLog;
 import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +17,10 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Created by absolutelysaurabh on 31/3/17.
+ */
 
 /**
  * Helper methods related to requesting and receiving earthquake data from TOI.
@@ -202,7 +199,7 @@ public final class QueryUtils {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the LASTOOONE earthquake JSON results", e);
+            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
         }
 
         // Return the list of earthquakes

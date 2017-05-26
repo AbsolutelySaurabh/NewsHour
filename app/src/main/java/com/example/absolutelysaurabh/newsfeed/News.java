@@ -30,6 +30,7 @@ public class News {
     }
 
     public String  getUrl(){
+
         return url;
     }
 

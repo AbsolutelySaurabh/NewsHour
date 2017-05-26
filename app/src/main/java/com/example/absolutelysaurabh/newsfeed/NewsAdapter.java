@@ -1,7 +1,6 @@
 package com.example.absolutelysaurabh.newsfeed;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,13 +28,13 @@ public class NewsAdapter extends ArrayAdapter<News>{
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         //Check if there is an existing list item view called convertView which we can reuse
-        //otherwise, if convertView is nullthen inflate a new list iem layout
+        //otherwise, if convertView is null then inflate a new list iem layout
 
-        //inflate is a syatem service that convert a View out of a XML layout
+        //inflate is a system service that convert a View out of a XML layout
         View listItemView = convertView;
         if(listItemView  == null){
 
-            //Inflate is a syatem service that creates a View out of an XML layout
+            //Inflate is a system service that creates a View out of an XML layout
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.news_list_item,parent,false);
 
         }

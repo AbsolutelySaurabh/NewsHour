@@ -2,16 +2,16 @@ package com.example.absolutelysaurabh.newsfeed;
 
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Intent;
-import android.net.Uri;
+import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.app.LoaderManager;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.Loader;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //To support the toolbar;
+//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+//        setSupportActionBar(myToolbar);
+
         //Find the reference to the link LIstView in the layout
         ListView newsListView = (ListView)findViewById(R.id.list);
 
@@ -53,22 +57,17 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
 
         // Set an item click listener on the ListView, which sends an intent to a web browser
-        // to open a website with more information about the selected earthquake.
+        // to open a website with more information about the selected news.
         newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Find the current earthquake that was clicked on
                 News currentNews = newsAdapter.getItem(position);
 
-                // Convert the String URL into a URI object (to pass into the Intent constructor)
-                //Then the android system will automatically recognize which browser to opem.
-                Uri newsUri = Uri.parse(currentNews.getUrl());
-
-                // Create a new intent to view the earthquake URI
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
-
-                // Send the intent to launch a new activity
-                startActivity(websiteIntent);
+                Intent i = new Intent(getApplicationContext(),WebviewActivity.class);
+                i.putExtra("articleUrl",currentNews.getUrl());
+                startActivity(i);
             }
         });
 
@@ -93,6 +92,47 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         // Create a new loader for the given URL
         return new NewsLoader(this, USGS_REQUEST_URL);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu options from the res/menu/menu_catalog.xml file.
+        // This adds menu items to the app bar.
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        //sharing intent
+//        MenuItem shareItem =  menu.findItem(R.id.share);
+//
+//        ActionProvider mShare =  MenuItemCompat.getActionProvider(shareItem);
+//
+//        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+//        shareIntent.setAction(Intent.ACTION_SEND);
+//        shareIntent.setType("text/plain");
+//        shareIntent.putExtra(Intent.EXTRA_TEXT,"text to share");
+
+        //mShare.setShareIntent(shareIntent);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // User clicked on a menu option in the app bar overflow menu
+        switch (item.getItemId()) {
+            // Respond to a click on the "Insert dummy data" menu option
+            case R.id.shareit:
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Take a look at my android app";
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "NewsFeed app");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share App Via"));
+
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
