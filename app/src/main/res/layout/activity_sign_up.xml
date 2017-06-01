@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sign_up"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBG"
+    tools:context="dd.com.myq.Activity.SignUpActivity">
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_text"
+        android:textSize="12sp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:id="@+id/top_container"
+            android:layout_width="match_parent"
+            android:paddingLeft="36dp"
+            android:paddingRight="36dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="18sp"
+                android:text="@string/facebook_text"
+                android:textColor="@color/colorGreyDark"/>
+
+
+            <com.facebook.login.widget.LoginButton
+                android:padding="0dp"
+                android:src="@drawable/fb_signin"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_below="@id/heading"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/facebook_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/facebook_signup"
+                android:id="@+id/or_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/tvText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textSize="18sp"
+                    android:text="@string/or_text"
+                    android:textColor="@color/colorGreyDark"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@id/tvText"
+                    android:background="@color/colorGreyDark"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/tvText"
+                    android:background="@color/colorGreyDark"
+                    />
+
+            </RelativeLayout>
+
+            <EditText
+                android:layout_below="@id/or_text"
+                android:id="@+id/full_name"
+                android:padding="8dp"
+                android:background="@drawable/edittext_bg"
+                android:layout_width="match_parent"
+                android:hint="@string/full_name_hint"
+                android:textSize="18sp"
+                android:inputType="textEmailAddress"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_below="@id/full_name"
+                android:id="@+id/email"
+                android:padding="8dp"
+                android:background="@drawable/edittext_bg"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:hint="@string/email_hint"
+                android:textSize="18sp"
+                android:inputType="textEmailAddress"
+                android:layout_height="wrap_content" />
+
+            <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+                android:padding="8dp"
+                android:layout_below="@id/email"
+                android:id="@+id/password"
+                android:background="@drawable/edittext_bg"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:hint="@string/password_hint"
+                android:textSize="18sp"
+                android:inputType="textPassword"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:padding="0dp"
+                android:src="@drawable/register_button"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:layout_below="@id/password"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/no_account"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account?"
+                android:textSize="18sp"
+                />
+
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <!--</ScrollView>-->
+
+</RelativeLayout>
