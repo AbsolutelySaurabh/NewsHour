@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         });
 
 
-
         //Get a reference to the LoaderManager , in order to interact with Loaders
         android.app.LoaderManager loaderManager = getLoaderManager();
 
@@ -83,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         newsListView.setEmptyView(mEmptyStateTextView);
-
 
     }
 

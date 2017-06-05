@@ -19,10 +19,10 @@ import java.util.List;
 
 public class NewsAdapter extends ArrayAdapter<News>{
 
-    public NewsAdapter(@NonNull Context context, List<News> earthquakes) {
-        super(context, 0,earthquakes);
-    }
+    public NewsAdapter(@NonNull Context context, List<News> news) {
 
+        super(context, 0,news);
+    }
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
