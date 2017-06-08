@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MyQ</string>
+    <string name="email_hint">Email</string>
+    <string name="category_text">Categories</string>
+    <string name="level_text">Levels</string>
+    <string name="password_hint">Password</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="or_text">Or</string>
+    <string name="facebook_text">Sign up with Facebook</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email_password">Enter your email address and we will send you your new password</string>
+    <string name="login_text">By Signing up you agree to the Terms of Service</string>
+    <string name="sponsor_text">Sponsored by Dignitas Digital</string>
+    <string name="facebook_app_id">235767460241051</string>
+
+</resources>

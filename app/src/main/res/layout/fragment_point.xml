@@ -1,0 +1,132 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dd.com.myq.Fragment.PointFragment">
+
+    <RelativeLayout
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:id="@+id/point_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Be a Winner!"
+            android:textColor="@color/colorGreyDark"
+            android:textSize="18sp"
+            />
+
+        <RelativeLayout
+            android:elevation="8dp"
+            android:layout_below="@id/point_heading"
+            android:background="@drawable/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/point_date"
+                android:paddingTop="20dp"
+                android:paddingBottom="5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Points acquired till 23 May 2017 :"
+                android:textSize="15sp"
+                android:textColor="@color/colorGreyDark"
+                />
+
+            <TextView
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:layout_below="@id/point_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGreyDark"
+                android:textSize="45sp"
+                android:text="4123 PTS"
+                android:id="@+id/points"
+                android:layout_centerHorizontal="true"
+                />
+
+            <View
+                android:id="@+id/line_up"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorGreyDark"
+                android:layout_below="@id/points"
+            />
+
+            <RelativeLayout
+                android:id="@+id/chart_container"
+                android:layout_below="@id/line_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="20dp"
+                >
+                <com.hookedonplay.decoviewlib.DecoView
+                    xmlns:custom="http://schemas.android.com/apk/res-auto"
+                    custom:dv_lineWidth="20dp"
+                    android:id="@+id/chart"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line_down"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorGreyDark"
+                android:layout_below="@id/chart_container"
+                />
+
+            <LinearLayout
+                android:id="@+id/tip_container"
+                android:layout_below="@id/line_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGreyDark"
+                    android:textSize="15sp"
+                    android:text="Tip:"
+                    android:textStyle="bold"
+                    android:id="@+id/tip_heading"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGreyDark"
+                    android:textSize="14sp"
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                    android:id="@+id/tip_text"
+                    />
+
+                </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
