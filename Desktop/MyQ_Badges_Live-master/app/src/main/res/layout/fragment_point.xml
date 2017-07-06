@@ -1,0 +1,175 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dd.com.myq.Fragment.PointFragment">
+
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+    <!--android:id="@+id/swipeToRefresh"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+
+
+
+    <RelativeLayout
+        android:elevation="8dp"
+        android:layout_margin="25dp"
+        android:background="@drawable/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/point_date"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Points acquired till 23 May 2017 :"
+            android:textSize="15sp"
+            android:textColor="@color/colorGreyDark"
+            />
+
+        <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@id/point_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGreyDark"
+            android:textSize="45sp"
+            tools:text="4120 pts"
+            android:id="@+id/points"
+            android:layout_centerHorizontal="true"
+            />
+
+        <View
+            android:id="@+id/line_up"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorGreyDark"
+            android:layout_below="@id/points"
+            />
+
+        <RelativeLayout
+            android:id="@+id/chart_container"
+            android:layout_below="@id/line_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="20dp"
+            >
+            <com.hookedonplay.decoviewlib.DecoView
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
+                custom:dv_lineWidth="20dp"
+                android:id="@+id/chart"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chart"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:id="@+id/correct_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/chart"
+                    android:background="@drawable/circle_orange"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="4dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/correct_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/chart"
+                    android:layout_marginTop="8dp"
+                    tools:text="123"
+                    android:padding="4dp"
+                    android:textSize="17sp"
+                    />
+
+                <ImageView
+                    android:id="@+id/incorrect_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/chart"
+                    android:background="@drawable/circle_purple"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="30dp"
+                    />
+
+                <TextView
+                    android:id="@+id/incorrect_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/chart"
+                    android:layout_marginTop="8dp"
+                    tools:text="123"
+                    android:padding="4dp"
+                    android:textSize="17sp"
+                    />
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line_down"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorGreyDark"
+            android:layout_below="@id/chart_container"
+            />
+
+        <LinearLayout
+            android:id="@+id/tip_container"
+            android:layout_below="@id/line_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGreyDark"
+                android:textSize="15sp"
+                android:text="Tip:"
+                android:textStyle="bold"
+                android:id="@+id/tip_heading"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGreyDark"
+                android:textSize="14sp"
+                android:text="You're doing awesome, Keep it up!!"
+                android:id="@+id/tip_text"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+</FrameLayout>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_edit_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBG"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:id="@+id/text_linear"
+        >
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/full_name_hint"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_weight="1"
+        android:padding="8dp"
+
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:background="@drawable/edittext_bg"
+
+
+        android:layout_marginTop="14dp"
+       />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/email_hint"
+        android:layout_weight="1"
+
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_margin="10dp"
+
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:background="@drawable/edittext_bg"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="About Me"
+
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:background="@drawable/edittext_bg"
+        android:ems="10"
+        android:id="@+id/editText3"
+
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Date Of Birth"
+        android:padding="8dp"
+
+        android:textSize="18sp"
+        android:background="@drawable/edittext_bg"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:focusable="true"
+        android:ems="10"
+
+        android:id="@+id/editText7"
+
+
+        />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_above="@+id/save_profile"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"
+
+            android:layout_alignParentStart="true">
+
+            <RadioButton
+                android:layout_width="112dp"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:id="@+id/radioButton"
+                android:textSize="15dp"
+
+                android:layout_gravity="center_horizontal" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-15dp"
+                android:text="@string/female"
+
+                android:id="@+id/radioButton2"
+                android:layout_gravity="center_horizontal"
+
+                android:textSize="15dp"
+
+                />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_linear"
+
+            >
+
+    <Button
+        android:padding="0dp"
+        android:src="@drawable/redb"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:id="@+id/save_profile"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="47dp"
+        android:text="Update Profile"
+        android:layout_margin="10dp"
+
+        android:textColor="@color/colorWhite"
+        android:backgroundTint="@color/colorMaroon"
+        android:layout_centerInParent="true"
+
+        />
+
+        </RelativeLayout>
+
+
+</RelativeLayout>

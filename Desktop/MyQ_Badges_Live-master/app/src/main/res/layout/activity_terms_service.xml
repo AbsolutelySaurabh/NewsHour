@@ -1,0 +1,326 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/colorBG"
+            android:text="Terms and Conditions"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:background="@color/colorPrimary"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thank you for using MyQ! We have drafted this policy to help you understand what information we collect, how we use it, and what choices you have. Because we are an internet company, some of the concepts below are a little technical, but we have tried our best to explain things in a simple and clear way. We welcome your questions and comments on this policy"
+            android:textSize="18sp"
+            android:padding="5dp"
+            android:textColor="@color/colorGreyText"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGreyDark"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:text="What information do we collect?"
+            android:textSize="18sp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="We collect information in two ways:"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:text="1. When you give it to us or give us permission to obtain it."
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="When you sign up for or use our products, you voluntarily give us certain information. This can include your name, profile photo, reviews comments, likes, email address you used to sign up, and any other information you provide us. If you are using MyQ on your mobile device, you can also choose to provide us with location data.
+
+You also may give us permission to access your information in other services. For example, you may link your Facebook or Twitter account to Myish, which allows us to obtain information from those accounts (e.g., your friends or contacts). The information we obtain from those services often depends on your settings or their privacy policies, so be sure to check what those are."
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:text="2. We also get technical information when you use our products or use websites or apps that have MyQ features."
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="These days, whenever you use a website, mobile application, or any other Internet service, certain information almost always gets created and recorded automatically. The same is true when you use our products. Here are some of the types of information we collect:"
+            android:textSize="15sp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="• Log Data: When you use MyQ or go to a webpage or use an app that has MyQ features (like our “My” button), our servers automatically record information (“log data”) including information that your browser sends whenever you visit a website or your mobile app sends when you’re using it. This log data may include your Internet Protocol address, the address of the web pages you visited that had Myish features, browser type and settings, the date and time of your request, how you used MyQ, and cookie data."
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="• Cookie Data: Depending on how you are accessing our products, we may use “cookies” (a small text file sent by your computer each time you visit our website, unique to your MyQ account or your browser), or similar technologies to record log data. When we use cookies, we may use “session” cookies (that last until you close your browser) or “persistent” cookies (that last until you or your browser delete them). For example, we may use cookies to store your language preferences or other MyQ settings so you do not have to set them up every time you visit Myish. Some of the cookies we use are associated with your MyQ account (including personal information about you, such as the email address you gave us), and other cookies are not.
+"            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="• Device Information: In addition to log data, we may also collect information about the device on which you use Myish on, including the type of device, the operating system, the device settings, unique device identifiers, and crash data. Whether we collect some or all of this information often depends on what type of device you are using and its settings. For example, different types of information are available depending on whether you use a Mac or a PC, or an iPhone or an Android phone. To learn more about what information your device makes available to us, please check the policies of your device manufacturer and/or software provider."
+            android:textSize="15sp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:text="How do we use the information we collect?"            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="The information we collect is used to provide you products and services. It is also used to develop new products and services, improve existing ones and protect MyQ and our users. For example, we may log how often and for how long people use two different versions of a product, which can help us understand which version is better.
+
+The information we collect is used to offer you customized content, including:
+
+Learn more about how we use information from outside of MyQ to customize your MyQ experience."
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="• Suggesting posts/reviews you might like. For example, if you have indicated that you are interested in fashion or visited fashion websites that has MyQ features, we may suggest fashion-related posts, or people that we think you might like"
+
+            android:textSize="15sp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+android:text="• Showing you ads you might be interested in."
+            android:textSize="15sp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:text="We also use the information we collect to:"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="• Send you updates (such as when certain activity, like reposts or comments, happens on MyQ), newsletters, marketing materials and other information that may be of interest to you. For example, depending on your email notification settings, we may send you weekly updates or topics that may be of interest to you. You can decide to stop getting these updates by updating your account settings (or through other settings we may provide).
+
+• Help your friends and contacts find you on MyQ. For example, if you sign up using a Facebook account, we may help your Facebook friends find your account on MyQ when they first sign up for MyQ. Or, we may allow people to search for your account on MyQ using your email address.
+"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+android:text="• Respond to your questions or comments.
+
+The information we collect may be “personally identifiable” (meaning it can be used to specifically identify you as a unique person) or “non-personally identifiable” (meaning it can’t be used to specifically identify you). We use both types of information, and combinations of both types, as described above. We may use or store information wherever MyQ does business, including countries outside your own."
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:text="What choices do you have about your information?"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Our goal is to give you simple and meaningful choices over your information. If you have a MyQ account, many of the choices you have on MyQ are built directly in to the product or your account settings. For example, you can:
+
+• Access and change information in your profile page at any time, choose whether your profile page is available to search engines, or choose whether others can find your MyQ account using your email address;
+"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+android:text="• Link or unlink your MyQ account from an account on another service (e.g., Facebook or Twitter). For some services (like Facebook), you can also choose whether or not to publish your activity on MyQ to that service.
+"            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+android:text="• Also, we support the “Do Not Track ” browser setting, and you can learn more by clicking here, about how it affects our collection and use of off-MyQ data. "            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="• You can close your account at any time. When you close your account, we will deactivate it and remove all details associated with it. However, we may retain archived copies of your information as required by law or for legitimate business purposes (including to help address fraud and spam). In addition to the examples above, we offer other choices that you can learn more about, by clicking here
+"            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="You may have choices available to you through the device or software you use to access MyQ. For example:"            android:textSize="18sp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="The browser you use may provide you with the ability to control cookies or other types of local data storage;
+
+Your mobile device may provide you with choices regarding how and whether location or other data is shared with us.
+
+To learn more about these choices, please see the information provided by the browser device or software provider."
+            android:textSize="15sp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:text="How do we share the information we collect?"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="MyQ is a tool people use to find their inspirations, make them a reality, and inspire others in the process. When you create public reviews, anyone can view them. You may also provide us with profile page information that that anyone can view. The other limited instances where we may share your personal information include:"
+            android:textSize="15sp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+android:text="• When we have your consent: This includes sharing information with other services (like Facebook or Twitter) when you have chosen to link to your MyQ account to those services or publish your activity on MyQ to them. For example, you can choose to publish your posts to Facebook or Twitter."
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="• When we believe that disclosure is reasonably necessary to comply with a law, regulation or legal request; to protect the safety, rights, or property of the public, a person, or MyQ; or to detect, prevent, or otherwise address fraud, security or technical issues.
+"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="• We may engage in a merger, acquisition, bankruptcy, dissolution, reorganization, or similar transaction or proceeding that involves the transfer of the information described in this Privacy Policy.
+"
+            android:textSize="15sp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="We may also share aggregated or non-personally identifiable information with our partners or others. For example, we may tell a business using MyQ the number of people who reposted something it shared, or the percentage of people who click on a post after viewing it."
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:text="How do we make changes to this policy?"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="We may change this policy from time to time, and, if we do, we will announce it on our home page. You will be able to view the revised policy on this page. If you continue to use MyQ after those changes are in effect, you agree to the revised policy."
+            android:textSize="15sp"
+            />
+
+
+    </LinearLayout>
+</ScrollView>

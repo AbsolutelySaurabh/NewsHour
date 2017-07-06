@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    >
+
+<RelativeLayout
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:id="@+id/i"
+    android:layout_marginLeft="@dimen/inbox_horizontal_margin"
+    android:layout_marginRight="@dimen/inbox_horizontal_margin"
+    android:layout_marginTop="@dimen/inbox_horizontal_margin"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/messageIcon"
+        android:src="@drawable/ic_image"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:contentDescription="Message Icon"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/senderLabel"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="8dp"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/messageIcon"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/timeLabel"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/senderLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/messageIcon"
+        android:textSize="12sp"
+        android:paddingBottom="8dp"
+       />
+</RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">GhostChat</string>
+
+    <string name="title_section1">Inbox</string>
+    <string name="title_section2">Friends</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="error_title">Error!</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_sign_up_acitivity">SignUpAcitivity</string>
+    <string name="title_activity_ghost_chat_application">GhostChatApplication</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_edit_friends">Edit Friends</string>
+
+    <string-array name="camera_choices">
+        <item>Take photo</item>
+        <item>Record video</item>
+        <item>Choose photo</item>
+        <item>Choose video</item>
+        <item>Send a text message</item>
+    </string-array>
+    <string name="title_activity_choose_recipients">Choose Friends</string>
+    <string name="title_activity_view_image">ViewImageActivity</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
+    <string name="title_activity_recover_password">Recover Password</string>
+    <string name="title_activity_send_text">SendTextActivity</string>
+    <string name="title_activity_send_message">SendMessageActivity</string>
+    <string name="field_re_enter_username">Re-Enter Username</string>
+    <string name="field_current_password">Enter current password</string>
+    <string name="title_continue_button">Continue...</string>
+    <string name="text_re_enter_login_details">Re-Enter your login details</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="About">Ghost Chat is India\'s first self-destruct chatting application for android. You can send image, video or text to your friends which would be destroyed as soon as they see it. \n Enjoy!</string>
+</resources>

@@ -1,0 +1,99 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_friends"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/friends_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Friends"
+            android:textSize="17sp"
+            android:textColor="@color/colorGreyText"
+            />
+
+
+        <TextView
+            android:id="@+id/add_friends_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGreyText"
+            android:text="Find Friends"
+            android:textSize="17sp"
+            android:layout_alignParentEnd="true"
+            />
+
+        <ImageView
+            android:id="@+id/plus_image"
+            android:layout_width="11dp"
+            android:layout_height="11dp"
+            android:src="@drawable/plus"
+            android:layout_toLeftOf="@+id/add_friends_text"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="5dp"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/top_friends"
+        >
+
+        <ListView
+            android:id="@+id/list"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            />
+
+        <ProgressBar
+            android:id="@+id/added_friends_progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            android:indeterminateTint="@color/colorPrimary"
+            />
+
+        <TextView
+            android:id="@+id/no_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="No Friends Yet !!"
+            android:textSize="23sp"
+            android:visibility="invisible"
+            />
+
+        <TextView
+            android:id="@+id/click_find_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/no_friends"
+            android:layout_centerHorizontal="true"
+            android:text="Click on Find Friends"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

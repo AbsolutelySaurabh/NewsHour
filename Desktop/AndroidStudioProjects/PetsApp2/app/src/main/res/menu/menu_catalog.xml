@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CatalogActivity">
+
+    <item
+        android:id="@+id/action_insert_dummy_data"
+        android:title="@string/action_insert_dummy_data"
+        app:showAsAction="never" />
+        <!--The above line of code signifies whether the item here should be shown in the-->
+        <!--appbar or in the overflow menu that is the three dots.-->
+        <!--Here its never which means in the overflow manu.-->
+
+
+    <item
+        android:id="@+id/action_delete_all_entries"
+        android:title="@string/action_delete_all_entries"
+        app:showAsAction="never" />
+</menu>

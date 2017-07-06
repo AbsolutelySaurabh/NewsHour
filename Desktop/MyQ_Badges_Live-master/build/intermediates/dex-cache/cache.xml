@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/49df5cfc9a7c4bb6cd9dc52c2faa00ea37291f54/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="543cbd7526b5bf05a5a1be344c53b1994f22a04f">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_189cd1c30e67a8660065af857dfb2c4d6ee51f47.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/72e9cf1a4e62b7f61fc7486912d88e46993c1452/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2737331564e0084fc0eb30ba500564a6dbe5e98f">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_1cd80802b04574dd44049c89b5dbb4eec8996d0c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/805adfbafcf4ccd1ed51c898a4797f0dd0962271/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f260cdc1a267b17b911022919f19d568e6624229">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_9233f40123e43625c870fc17a8fcd7a1be5ab214.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/library/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e5a824b3d8cb2aebacef31e25688008ad6a360d2">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_f6bd8977259526fbebf1212390fa015de51d14e8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/e6019abe8b6483595e85a64fc83193124886db3c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9a6350134db98fb39e212ddca5f0bad9280e8f3f">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_c9912b63003cea2610338d788c537292330845ce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/3932ec85d260f6e9fefa5652d7d0a382389f30bd/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e4ff475aad14939684efd3227ec19cd49e90888f">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_dcdcbbd496118cd4121d0a8f7b3759c4dbbcada5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/b428eadbba695186fe76f487da8e8373d335dcea/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="79a435f1c45ac04593a5134d70da983305584e90">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_eab75035563d363e77ab443e30ebc236c66defac.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/ec1e5ec44c2ebf256b700cc008ed9ed38775ae86/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="86baa7d1051901fc1b8e7f596732f71f32175bde">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_c94514f9442a596a973fce3980a322f7e5cda818.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/9dd4e6e00c6600724b3856da370931c2042420fb/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9e8c74e789b51b9da4070aeaed71bae36c3d244f">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_29c9de6d26d4d0e1f102d15e4c1c040fe529bbcc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/50dc601266938e9d910ecb2e4b4ac1ebaad39d20/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2c1d9fbe7d2f686b3dcdbc3f63a983a211401ca3">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_6dc677014facb91b390b4a4ea3323843ff9e4c68.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/504712cc4721ff3736be5083fb5a21ca8edd200f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fc5624185d414a0f572bfb3df7d841ceb335aef9">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_e7c397b675824eb3f52666713ef42a379a587449.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.4.0/f36d2d4e3a36b3259aaf9d004d29b4cdc6c1bfb2/picasso-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f36d2d4e3a36b3259aaf9d004d29b4cdc6c1bfb2">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/picasso-2.4.0_5f6c7d571d21f35db4e7bfe18658954e32a3fdf0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/ae7d86d1391498b30707601d9d8dc70d6f128cfa/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a71be5f29a1c1e3fd3e84472742668f101a5b936">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_3b33f9087285181b6c71d40392302b2fa5bf425b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/63be06d1ec1c018e992c2a17b4f4f60e1a0d7a60/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="240e5a7c620376184f3168cfdd36315b97b1fe07">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_e9066a7f5ea928c5747b8ffe3834adc51e8b239d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/absolutelysaurabh/.android/build-cache/938d108f6b02a77dd88cff50e27710fb82e6a3f1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a2d9cd43adbe7599a78f2293273a77881c1909a">
+        <dex dex="/home/absolutelysaurabh/Desktop/MyQ_Badges_Live-master/app/build/intermediates/pre-dexed/debug/classes_dce3a2bef8cd989e835232b93525412ad45342b7.jar" />
+    </item>
+
+</items>

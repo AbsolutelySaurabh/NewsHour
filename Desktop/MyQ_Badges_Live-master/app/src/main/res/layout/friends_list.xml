@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="2dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp">
+
+
+    <LinearLayout
+        android:id="@+id/friend_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/card"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/friend_profile_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/avatars"
+            android:padding="10dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/userDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            >
+
+            <TextView
+                android:id="@+id/friend_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Saurabh singh"
+                android:textSize="18sp"
+                android:textColor="@color/colorGreyText"
+                android:paddingBottom="5dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Points: "
+                    android:textSize="15sp"
+                    android:paddingTop="2dp"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorGreyText"
+                    />
+
+                <TextView
+                    android:id="@+id/friend_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="33"
+                    android:textSize="15sp"
+                    android:paddingTop="2dp"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorGreyText"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/friend_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/arrow_right"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="1dp"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

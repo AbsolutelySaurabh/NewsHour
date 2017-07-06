@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dd.com.myq">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.NETWORK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <application
+        android:name=".App.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".Activity.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Activity.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Activity.ForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".Activity.Levels"
+            android:label="Levels"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar" />
+        <activity
+            android:name=".Activity.Categories"
+            android:label="Categories"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar" />
+        <activity
+            android:name=".Activity.ChangePassword"
+            android:label="@string/changepassword"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar" />
+        <activity
+            android:name=".Activity.EditProf"
+            android:label="@string/editprofile"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar" />
+        <activity android:name=".Activity.TermsService"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar"
+            />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="36c29b703c9b764200ccf9d2ca555f2973c5c03c" />
+
+        <receiver
+            android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!--
+             Optionally, register CampaignTrackingReceiver and CampaignTrackingService to enable
+             installation campaign reporting
+        -->
+        <receiver
+            android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+        <service android:name=".Activity.MyFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Activity.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".Activity.FindFriendsActivity"
+            android:label="Find Friends"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar" />
+        <activity
+            android:name=".Activity.Fb_Friends"
+            android:label="Facebook Friends"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar" />
+        <activity
+            android:name=".Activity.Badges"
+            android:label="Badges"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar" />
+        <activity android:name=".Activity.GroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar"/>
+    </application>
+
+</manifest>

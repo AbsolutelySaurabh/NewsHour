@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_below="@id/top_bar"
+    android:layout_above="@id/buttons"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/helloText"
+        android:layout_below="@+id/report_question"
+        android:layout_above="@+id/buttons"
+        android:textSize="25sp"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/colorGreyDark"
+        android:background="@drawable/card"
+        tools:text="hello_world"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--<View-->
+    <!--android:id="@+id/item_swipe_left_indicator"-->
+    <!--android:alpha="0"-->
+    <!--android:layout_width="20dp"-->
+    <!--android:layout_height="20dp"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:background="#A5F" />-->
+
+
+
+</RelativeLayout>

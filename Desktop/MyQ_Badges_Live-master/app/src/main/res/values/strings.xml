@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">MyQ</string>
+    <string name="email_hint">Email</string>
+    <string name="category_text">Categories</string>
+    <string name="level_text">Levels</string>
+    <string name="password_hint">Password</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="or_text">Or</string>
+    <string name="facebook_text">Sign up with Facebook</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email_password">Enter your email address and we will send you your new password</string>
+    <string name="login_text">By Signing up you agree to the Terms of Service</string>
+    <string name="sponsor_text">Developed by Dignitas Digital</string>
+    <!--<string name="facebook_app_id">235767460241051</string>-->
+    <string name="confirm_password">Confirm Password</string>
+    <string name="update">Update Profile </string>
+    <string name="new_password_hint">Enter New Password</string>
+    <string name="old_password_hint">Enter Old Password</string>
+    <string name="old_profile_pic">Old Profile Picture</string>
+    <string name="Updated_profile_pic">Updated Profile Picture</string>
+
+
+    <string name="facebook_app_id">206398373217844</string>
+    <string name="fb_login_protocol_scheme">fb206398373217844</string>
+
+    <string name="gender_hint">Gender</string>
+    <string name="male">Male</string>
+    <string name="changepassword">Change Password</string>
+    <string name="editprofile">Edit Profile</string>
+    <string name="female">Female</string>
+    <string name="others">Others</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
