@@ -4,20 +4,26 @@
     android:layout_height="match_parent"
     android:background="#212121" >
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content">
+
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:src="@mipmap/icon2" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textColor="#FFFFFF"
         android:gravity="center_horizontal"
-        android:layout_below="@+id/imgLogo"
         android:text="NewsHour : Stay Updated" />
+    </LinearLayout>
 
 </RelativeLayout>

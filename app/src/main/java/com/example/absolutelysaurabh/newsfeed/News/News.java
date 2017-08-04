@@ -1,4 +1,4 @@
-package com.example.absolutelysaurabh.newsfeed;
+package com.example.absolutelysaurabh.newsfeed.News;
 
 /**
  * Created by absolutelysaurabh on 31/3/17.
