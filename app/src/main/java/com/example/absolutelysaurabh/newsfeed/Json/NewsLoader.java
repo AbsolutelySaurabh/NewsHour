@@ -1,11 +1,13 @@
-package com.example.absolutelysaurabh.newsfeed;
+package com.example.absolutelysaurabh.newsfeed.Json;
 
 /**
  * Created by absolutelysaurabh on 31/3/17.
  */
 import android.content.Context;
 import android.content.AsyncTaskLoader;
-import android.content.Context;
+
+import com.example.absolutelysaurabh.newsfeed.News.News;
+
 import java.util.List;
 
 /**
@@ -13,8 +15,6 @@ import java.util.List;
  * network request to the given URL.
  */
 
-//REQUIURED CZ::::::
-    //Loader used AsyncTask behind the scenes;
 public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     /** Tag for log messages */

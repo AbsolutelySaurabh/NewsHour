@@ -4,72 +4,83 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="16dp"
+    android:paddingTop="8dp"
     android:paddingLeft="8dp"
-    android:paddingBottom="16dp"
-    android:paddingRight="8dp"
-    >
-
-    <TextView
-        android:id="@+id/serial_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        />
+    android:paddingBottom="4dp"
+    android:paddingRight="8dp">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
+        android:touchscreenBlocksFocus="true"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
+        android:background="@drawable/card"
         android:layout_weight="1"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/title"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:fontFamily="Monospace"
+            android:fontFamily="sans-serif-medium"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorGreyText"
             android:maxLines="2"
             android:textSize="16sp"
             android:textAllCaps="false"
             tools:text="This is just a heading of the app but it requires space"
             />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
 
-            <TextView
-                android:id="@+id/date"
-                android:textAlignment="center"
-                android:textColor="#EEEEEE"
-                tools:text="Mar 6, 2010"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <!--android:orientation="horizontal">-->
 
-                />
-            <TextView
-                android:id="@+id/time"
-                android:textColor="#EEEEEE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="3:00 P.M."
-                android:textAlignment="center"
-                />
+            <!--<TextView-->
+                <!--android:id="@+id/date"-->
+                <!--android:textAlignment="center"-->
+                <!--android:fontFamily="sans-serif"-->
+                <!--android:textAppearance="?android:textAppearanceSmall"-->
+                <!--android:textColor="#AEB6BD"-->
+                <!--tools:text="Mar 6, 2010"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
 
-        </LinearLayout>
+
+                <!--/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/time"-->
+                <!--android:fontFamily="sans-serif"-->
+                <!--android:textAppearance="?android:textAppearanceSmall"-->
+                <!--android:textColor="#AEB6BD"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--tools:text="3:00 P.M."-->
+                <!--android:textAlignment="center"-->
+                <!--/>-->
+
+        <!--</LinearLayout>-->
         <TextView
             android:id="@+id/description"
-            android:textColor="#EEEEEE"
+            android:textColor="@color/colorGreyText"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="This is the news feed"
-            />
+            tools:text="This is the news feed" />
+            </LinearLayout>
     </LinearLayout>
 
 
