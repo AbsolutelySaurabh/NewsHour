@@ -2,7 +2,7 @@
 App features:
 This is a News Feed android app.
 The user can navigate through fragments via tabs.
-He/She also has the option to see the news of a particular channel which he can choose.  
+He/She also has the option to see the news of a particular channel which he choose.  
 
 
 
