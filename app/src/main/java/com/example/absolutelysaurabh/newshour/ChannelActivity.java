@@ -1,15 +1,16 @@
-package com.example.absolutelysaurabh.newshour.ClassFragments;
+package com.example.absolutelysaurabh.newshour;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +20,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.absolutelysaurabh.newshour.ClassFragments.TechFragment;
 import com.example.absolutelysaurabh.newshour.Config.Config;
-import com.example.absolutelysaurabh.newshour.DetailsActivity;
-import com.example.absolutelysaurabh.newshour.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
@@ -32,15 +32,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import javax.security.auth.login.LoginException;
+
 import cz.msebera.android.httpclient.Header;
 
 /**
- * Created by absolutelysaurabh on 6/8/17.
+ * Provides UI for the Detail page with Collapsing Toolbar.
  */
+public class ChannelActivity extends AppCompatActivity {
 
-public class TechFragment extends Fragment {
-
-    public static String GET_NEWS_URL = "";
+    public static String channels[] = {"Guardian", "ESPN", "TechCrunch", "MTVnews", "HackerNews", "TheHindu",
+     "TechRadar", "CNN", "FinancialTimes", "Mashable", "FoxSports"};
 
     public static ArrayList<String> al_news_title;
     public static ArrayList<String> al_news_desc;
@@ -48,17 +50,20 @@ public class TechFragment extends Fragment {
     public static ArrayList<String> al_news_urlToImage;
     public static ArrayList<String> al_news_publishedAt;
 
-    public static int index = 0;
+    public static final String EXTRA_POSITION = "position";
+    public static String NEWS_URL = "";
     ContentAdapter adapter;
     RecyclerView recyclerView;
     View listItemView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_channel);
 
-
-        GET_NEWS_URL = Config.TECHCRUNCH_URL + Config.API_KEY;
-        Log.e("GET NEWS URL: ", GET_NEWS_URL);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Set Collapsing Toolbar layout to the screen
 
         al_news_desc = new ArrayList<>();
         al_news_title = new ArrayList<>();
@@ -66,22 +71,77 @@ public class TechFragment extends Fragment {
         al_news_url = new ArrayList<>();
         al_news_urlToImage = new ArrayList<>();
 
-        recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView.setNestedScrollingEnabled(false);
 
-        listItemView = inflater.inflate(R.layout.item_tech, container, false);
-        View loadingIndicator = listItemView.findViewById(R.id.loading_indicator);
-        loadingIndicator.setVisibility(View.VISIBLE);
+        int position = getIntent().getIntExtra("position", 0);
+        Resources resources = getResources();
 
-        getTechNews(GET_NEWS_URL);
+        if(position == 0){
 
-        Log.e("Ran into TIME: ", "........");
+//            NEWS_URL = Config.TOI_URL + Config.API_KEY;
+            NEWS_URL = Config.THEGUARDIAN_URL + Config.API_KEY;
+
+
+        }else
+            if(position == 1){
+
+                NEWS_URL = Config.THEGUARDIAN_URL + Config.API_KEY;
+
+            }else
+            if(position == 2){
+
+                NEWS_URL = Config.ESPN_URL + Config.API_KEY;
+
+
+            }else
+            if(position == 3){
+
+                NEWS_URL = Config.TECHCRUNCH_URL + Config.API_KEY;
+
+
+            }else
+            if(position == 4){
+
+                NEWS_URL = Config.MTVNEWS_URL + Config.API_KEY;
+
+
+            }else
+            if(position == 5){
+
+                NEWS_URL = Config.HACKERNEWS_URL + Config.API_KEY;
+
+            }else
+            if(position == 6){
+
+                NEWS_URL = Config.HINDU_URL + Config.API_KEY;
+
+
+            }else
+            if(position == 7){
+
+                NEWS_URL = Config.FINANCIALTIMES_URL + Config.API_KEY;
+
+            }else
+            if(position == 8){
+
+                NEWS_URL = Config.MASHABLE_URL + Config.API_KEY;
+
+            }else
+            if(position == 9){
+
+                NEWS_URL = Config.FOXSPORTS_URL + Config.API_KEY;
+
+            }
+
+        Log.e("NEWS_URL: ", NEWS_URL);
+        getChannelWiseNews(NEWS_URL);
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        return recyclerView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView picture;
         public TextView title;
@@ -143,9 +203,9 @@ public class TechFragment extends Fragment {
     /**
      * Adapter to display recycler view.
      */
-    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+    public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of Card in RecyclerView.
-        private static final int LENGTH = al_news_desc.size();
+        private final int LENGTH = al_news_desc.size();
 
         private Context context;
 
@@ -156,12 +216,14 @@ public class TechFragment extends Fragment {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
             return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
         }
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
 
+            Log.e("OnBindViiewHolder: ", al_news_title.get(position));
             Picasso.with(context).load(al_news_urlToImage.get(position)).into(holder.picture);
             holder.title.setText(al_news_title.get(position));
             holder.description.setText(al_news_desc.get(position));
@@ -173,10 +235,11 @@ public class TechFragment extends Fragment {
         }
     }
 
-    public void getTechNews(String NEWS_REQUEST_URL){
+
+    public void getChannelWiseNews(String NEWS_REQUEST_URL){
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(getActivity(), NEWS_REQUEST_URL , new JsonHttpResponseHandler() {
+        client.get(this, NEWS_REQUEST_URL , new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject responseObject) {
                 try {
@@ -201,9 +264,6 @@ public class TechFragment extends Fragment {
                         Log.d("QUESTIONS: "+ String.valueOf(i), title);
                     }
 
-                    View loadingIndicator = listItemView.findViewById(R.id.loading_indicator);
-                    loadingIndicator.setVisibility(View.GONE);
-
                     adapter = new ContentAdapter(recyclerView.getContext());
                     recyclerView.setAdapter(adapter);
 
@@ -217,6 +277,13 @@ public class TechFragment extends Fragment {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+
+        finish();
+        return true;
     }
 
 }

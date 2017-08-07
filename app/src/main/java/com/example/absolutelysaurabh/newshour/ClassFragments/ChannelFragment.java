@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.absolutelysaurabh.newshour.ChannelActivity;
 import com.example.absolutelysaurabh.newshour.DetailsActivity;
 import com.example.absolutelysaurabh.newshour.R;
 public class ChannelFragment extends Fragment {
@@ -49,13 +50,9 @@ public class ChannelFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, DetailsActivity.class);
+                    Intent intent = new Intent(context, ChannelActivity.class);
 
-                    Bundle bund = new Bundle();
-                    bund.putInt("tab",3);
-                    bund.putInt(DetailsActivity.EXTRA_POSITION,getAdapterPosition());
-
-                    intent.putExtra("bundle", bund);
+                    intent.putExtra("position", getAdapterPosition());
                     context.startActivity(intent);
                 }
             });

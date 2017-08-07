@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="places">
-        <item>TOI</item>
+        <!--<item>TOI</item>-->
         <item>THE GUARDIAN</item>
         <item>ESPN</item>
         <item>TECHCRUNCH</item>
@@ -89,7 +89,7 @@
         <item>@drawable/f_avator</item>
     </array>
     <array name="places_picture">
-        <item>@drawable/toi</item>
+        <!--<item>@drawable/toi</item>-->
         <item>@drawable/guardian</item>
         <item>@drawable/espn</item>
         <item>@drawable/tcrunch</item>
