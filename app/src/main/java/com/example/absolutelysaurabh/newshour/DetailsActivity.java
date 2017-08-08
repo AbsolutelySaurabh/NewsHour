@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.absolutelysaurabh.newshour.ClassFragments.ChannelFragment;
 import com.example.absolutelysaurabh.newshour.ClassFragments.HeadlineFragment;
 import com.example.absolutelysaurabh.newshour.ClassFragments.TechFragment;
 import com.example.absolutelysaurabh.newshour.R;
@@ -46,6 +47,13 @@ public class DetailsActivity extends AppCompatActivity {
             collapsingToolbar.setTitle(HeadlineFragment.al_news_title.get(position));
             newsDescription.setText(HeadlineFragment.al_news_desc.get(position));
             Picasso.with(this).load(HeadlineFragment.al_news_urlToImage.get(position)).error(R.drawable.guardian).into(newsImage);
+
+        }else
+        if(tab_opened == 2){
+
+            collapsingToolbar.setTitle(ChannelActivity.al_news_title.get(position));
+            newsDescription.setText(ChannelActivity.al_news_desc.get(position));
+            Picasso.with(this).load(ChannelActivity.al_news_urlToImage.get(position)).error(R.drawable.guardian).into(newsImage);
 
         }else
             if(tab_opened == 3){

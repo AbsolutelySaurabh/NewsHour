@@ -37,7 +37,6 @@ import cz.msebera.android.httpclient.Header;
 /**
  * Created by absolutelysaurabh on 6/8/17.
  */
-
 public class TechFragment extends Fragment {
 
     public static String GET_NEWS_URL = "";
@@ -75,7 +74,6 @@ public class TechFragment extends Fragment {
         getTechNews(GET_NEWS_URL);
 
         Log.e("Ran into TIME: ", "........");
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return recyclerView;
@@ -162,7 +160,7 @@ public class TechFragment extends Fragment {
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
 
-            Picasso.with(context).load(al_news_urlToImage.get(position)).into(holder.picture);
+            Picasso.with(context).load(al_news_urlToImage.get(position)).error(R.drawable.guardian).into(holder.picture);
             holder.title.setText(al_news_title.get(position));
             holder.description.setText(al_news_desc.get(position));
         }

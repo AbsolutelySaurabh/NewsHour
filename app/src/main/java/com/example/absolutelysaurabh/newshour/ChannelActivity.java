@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.absolutelysaurabh.newshour.ClassFragments.HeadlineFragment;
 import com.example.absolutelysaurabh.newshour.ClassFragments.TechFragment;
 import com.example.absolutelysaurabh.newshour.Config.Config;
 import com.loopj.android.http.AsyncHttpClient;
@@ -41,7 +43,7 @@ import cz.msebera.android.httpclient.Header;
  */
 public class ChannelActivity extends AppCompatActivity {
 
-    public static String channels[] = {"Guardian", "ESPN", "TechCrunch", "MTVnews", "HackerNews", "TheHindu",
+    public static String channels[] = {"Guardian","TOI", "ESPN", "TechCrunch", "MTVnews", "HackerNews", "TheHindu",
      "TechRadar", "CNN", "FinancialTimes", "Mashable", "FoxSports"};
 
     public static ArrayList<String> al_news_title;
@@ -55,6 +57,8 @@ public class ChannelActivity extends AppCompatActivity {
     ContentAdapter adapter;
     RecyclerView recyclerView;
     View listItemView;
+
+    Drawable[] channelsPictures;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,66 +75,109 @@ public class ChannelActivity extends AppCompatActivity {
         al_news_url = new ArrayList<>();
         al_news_urlToImage = new ArrayList<>();
 
+        Resources resources = getApplicationContext().getResources();
+        TypedArray a = resources.obtainTypedArray(R.array.places_picture);
+        channelsPictures = new Drawable[a.length()];
+        for (int i = 0; i < channelsPictures.length; i++) {
+
+            channelsPictures[i] = a.getDrawable(i);
+        }
+
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setNestedScrollingEnabled(false);
 
         int position = getIntent().getIntExtra("position", 0);
-        Resources resources = getResources();
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        ImageView newsImage = (ImageView) findViewById(R.id.image);
 
         if(position == 0){
 
-//            NEWS_URL = Config.TOI_URL + Config.API_KEY;
             NEWS_URL = Config.THEGUARDIAN_URL + Config.API_KEY;
+            collapsingToolbar.setTitle("The Guardian");
+            Picasso.with(this).load(R.drawable.guardian).error(R.drawable.guardian).into(newsImage);
+
 
 
         }else
             if(position == 1){
 
-                NEWS_URL = Config.THEGUARDIAN_URL + Config.API_KEY;
+                NEWS_URL = Config.TOI_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("The Times of India");
+                Picasso.with(this).load(R.drawable.toi).error(R.drawable.guardian).into(newsImage);
 
             }else
             if(position == 2){
 
                 NEWS_URL = Config.ESPN_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("ESPN");
+                Picasso.with(this).load(R.drawable.espn).error(R.drawable.guardian).into(newsImage);
 
 
             }else
             if(position == 3){
 
                 NEWS_URL = Config.TECHCRUNCH_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("TechCrunch");
+                Picasso.with(this).load(R.drawable.tcrunch).error(R.drawable.guardian).into(newsImage);
 
 
             }else
             if(position == 4){
 
                 NEWS_URL = Config.MTVNEWS_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("MTV News");
+                Picasso.with(this).load(R.drawable.mtv_news).error(R.drawable.guardian).into(newsImage);
 
 
             }else
             if(position == 5){
 
                 NEWS_URL = Config.HACKERNEWS_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("HackerNews");
+                Picasso.with(this).load(R.drawable.hackernews).error(R.drawable.guardian).into(newsImage);
 
             }else
             if(position == 6){
 
                 NEWS_URL = Config.HINDU_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("The Hindu");
+                Picasso.with(this).load(R.drawable.hindu).error(R.drawable.guardian).into(newsImage);
 
 
             }else
             if(position == 7){
 
-                NEWS_URL = Config.FINANCIALTIMES_URL + Config.API_KEY;
+                NEWS_URL = Config.TECHRADAR_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("TechRadar");
+                Picasso.with(this).load(R.drawable.techradar).error(R.drawable.guardian).into(newsImage);
 
             }else
             if(position == 8){
 
-                NEWS_URL = Config.MASHABLE_URL + Config.API_KEY;
+                NEWS_URL = Config.CNN_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("Hacker-News");
+                Picasso.with(this).load(R.drawable.cnn).error(R.drawable.guardian).into(newsImage);
 
             }else
             if(position == 9){
 
+                NEWS_URL = Config.FINANCIALTIMES_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("Financial Times");
+                Picasso.with(this).load(R.drawable.financialtimes).error(R.drawable.guardian).into(newsImage);
+
+            }else
+            if(position == 10){
+
+                NEWS_URL = Config.MASHABLE_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("Mashable");
+                Picasso.with(this).load(R.drawable.mashable).error(R.drawable.guardian).into(newsImage);
+
+            }else
+            if(position == 11){
+
                 NEWS_URL = Config.FOXSPORTS_URL + Config.API_KEY;
+                collapsingToolbar.setTitle("Fox Sports");
+                Picasso.with(this).load(R.drawable.foxsports).error(R.drawable.guardian).into(newsImage);
 
             }
 
@@ -161,7 +208,7 @@ public class ChannelActivity extends AppCompatActivity {
                     Intent intent = new Intent(context, DetailsActivity.class);
 
                     Bundle bund = new Bundle();
-                    bund.putInt("tab",3);
+                    bund.putInt("tab",2);
                     bund.putInt(DetailsActivity.EXTRA_POSITION,getAdapterPosition());
 
                     intent.putExtra("bundle", bund);
@@ -224,7 +271,9 @@ public class ChannelActivity extends AppCompatActivity {
         public void onBindViewHolder(ViewHolder holder, int position) {
 
             Log.e("OnBindViiewHolder: ", al_news_title.get(position));
-            Picasso.with(context).load(al_news_urlToImage.get(position)).into(holder.picture);
+            Picasso.with(getApplicationContext()).load(al_news_urlToImage.get(position))
+                    .error(channelsPictures[position % channelsPictures.length]).into(holder.picture);
+
             holder.title.setText(al_news_title.get(position));
             holder.description.setText(al_news_desc.get(position));
         }
