@@ -4,17 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-<<<<<<< HEAD
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-=======
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.constraint.solver.ArrayLinkedVariables;
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< HEAD
 import android.widget.TextView;
 
 import com.example.absolutelysaurabh.newshour.BookMarks.BookmarksDbHelper;
@@ -34,54 +26,27 @@ import com.example.absolutelysaurabh.newshour.R;
 import com.example.absolutelysaurabh.newshour.Util.ConnectionDetector;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
-=======
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.example.absolutelysaurabh.newshour.Config.Config;
-import com.example.absolutelysaurabh.newshour.DetailsActivity;
-import com.example.absolutelysaurabh.newshour.R;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.squareup.picasso.Picasso;
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-=======
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.TokenIterator;
-import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.support.constraint.R.id.parent;
-
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 /**
  * Created by absolutelysaurabh on 6/8/17.
  */
 
 public class HeadlineFragment extends Fragment {
 
-<<<<<<< HEAD
     public static String GET_NEWS_URL_TOI = "", GET_NEWS_URL_CNN = "", GET_NEWS_URL_HINDU = "",
             GET_NEWS_URL_GUARDIAN = "";
 
     private BookmarksDbHelper bookmarksDbHelper;
     private HeadlinesDbHelper headlineNewsDbHelper;
-=======
-    public static String GET_NEWS_URL = "";
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 
     public static ArrayList<String> al_news_title;
     public static ArrayList<String> al_news_desc;
@@ -98,17 +63,12 @@ public class HeadlineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-<<<<<<< HEAD
         GET_NEWS_URL_TOI = Config.TOI_URL + Config.API_KEY;
         GET_NEWS_URL_CNN = Config.CNN_URL + Config.API_KEY ;
         GET_NEWS_URL_HINDU = Config.HINDU_URL + Config.API_KEY;
         GET_NEWS_URL_GUARDIAN = Config.THEGUARDIAN_URL + Config.API_KEY;
 
         Log.e("GET NEWS URL TOI: ", GET_NEWS_URL_TOI);
-=======
-        GET_NEWS_URL = Config.TOI_URL + Config.API_KEY;
-        Log.e("GET NEWS URL: ", GET_NEWS_URL);
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 
         listItemView = inflater.inflate(R.layout.item_headline, container, false);
         loadingIndicator = listItemView.findViewById(R.id.loading_indicator);
@@ -118,7 +78,6 @@ public class HeadlineFragment extends Fragment {
         al_news_url = new ArrayList<>();
         al_news_urlToImage = new ArrayList<>();
 
-<<<<<<< HEAD
         bookmarksDbHelper = new BookmarksDbHelper(getContext());
         headlineNewsDbHelper = new HeadlinesDbHelper(getContext());
 
@@ -139,12 +98,6 @@ public class HeadlineFragment extends Fragment {
             Log.e("You're offline now: ", "..");
             getHeadlinesFromDatabase();
         }
-=======
-        recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-        loadingIndicator.setVisibility(View.VISIBLE);
-
-        getHeadLines(GET_NEWS_URL);
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 
         Log.e("ANOTHER ONE: ", "........");
         return recyclerView;
@@ -213,7 +166,6 @@ public class HeadlineFragment extends Fragment {
 
             holder.avator.setImageDrawable(mPlaceAvators[position % mPlaceAvators.length]);
 //            Picasso.with(context).load(R.drawable.a).into(holder.avator);
-<<<<<<< HEAD
 
             try {
                 holder.title.setText(al_news_title.get(position));
@@ -222,10 +174,6 @@ public class HeadlineFragment extends Fragment {
 
                 e.printStackTrace();
             }
-=======
-            holder.title.setText(al_news_title.get(position));
-            holder.description.setText(al_news_desc.get(position));
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 
             Log.e("position holder: ", String.valueOf(position));
             index++;
@@ -247,7 +195,6 @@ public class HeadlineFragment extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, JSONObject responseObject) {
                 try {
 
-<<<<<<< HEAD
                     SQLiteDatabase db = headlineNewsDbHelper.getReadableDatabase();
                     Cursor rs = db.rawQuery("SELECT * FROM headlineNews",null);
 
@@ -319,8 +266,6 @@ public class HeadlineFragment extends Fragment {
                     SQLiteDatabase db = headlineNewsDbHelper.getReadableDatabase();
                     Cursor rs = db.rawQuery("SELECT * FROM simpleNews",null);
 
-=======
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
                     JSONArray responseArray = responseObject.getJSONArray("articles");
                     for(int i=0;i<responseArray.length();i++){
 
@@ -332,7 +277,6 @@ public class HeadlineFragment extends Fragment {
                         String urlToImage = currentNews.getString("urlToImage");
                         String publishedAt = currentNews.getString("publishedAt");
 
-<<<<<<< HEAD
                         if(description.length()>5) {
 
 
@@ -362,13 +306,6 @@ public class HeadlineFragment extends Fragment {
                             al_news_title.add(title);
                             al_news_url.add(url);
                         }
-=======
-                        al_news_desc.add(description);
-                        al_news_urlToImage.add(urlToImage);
-                        al_news_publishedAt.add(publishedAt);
-                        al_news_title.add(title);
-                        al_news_url.add(url);
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 
                         Log.d("QUESTIONS: "+ String.valueOf(i), title);
                     }
@@ -392,7 +329,6 @@ public class HeadlineFragment extends Fragment {
             }
         });
     }
-<<<<<<< HEAD
 
     public void getHeadlinesFromDatabase(){
 
@@ -428,6 +364,4 @@ public class HeadlineFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
-=======
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 }

@@ -53,18 +53,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-<<<<<<< HEAD
             android:paddingTop="@dimen/md_keylines">
 
             <TextView
                 android:paddingLeft="10dp"
-=======
-            android:paddingLeft="@dimen/article_keylines"
-            android:paddingRight="@dimen/md_keylines"
-            android:paddingTop="@dimen/md_keylines">
-
-            <TextView
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorAccent"
@@ -73,18 +65,14 @@
                 android:layout_marginBottom="@dimen/md_keylines" />
 
             <TextView
-<<<<<<< HEAD
                 android:paddingLeft="10dp"
                 android:paddingRight="@dimen/md_keylines"
-=======
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
                 android:id="@+id/place_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="@string/detail_desc" />
 
             <TextView
-<<<<<<< HEAD
                 android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,21 +102,5 @@
         </LinearLayout>
 
 
-=======
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/colorAccent"
-                android:text="Location"
-                android:textSize="@dimen/article_titles"
-                android:layout_marginBottom="@dimen/md_keylines"
-                android:layout_marginTop="@dimen/md_keylines" />
-
-            <TextView
-                android:id="@+id/place_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="@string/detail_location" />
-        </LinearLayout>
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

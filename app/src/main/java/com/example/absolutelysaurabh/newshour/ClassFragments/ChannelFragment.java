@@ -13,15 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-<<<<<<< HEAD
 
 import com.example.absolutelysaurabh.newshour.Activity.ChannelActivity;
-=======
-import android.widget.TextView;
-
-import com.example.absolutelysaurabh.newshour.ChannelActivity;
-import com.example.absolutelysaurabh.newshour.DetailsActivity;
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 import com.example.absolutelysaurabh.newshour.R;
 public class ChannelFragment extends Fragment {
 

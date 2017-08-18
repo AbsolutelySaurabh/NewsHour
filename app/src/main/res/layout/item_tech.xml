@@ -48,21 +48,13 @@
             android:textSize="@dimen/article_subheading" />
 
         <Button
-<<<<<<< HEAD
             android:id="@+id/read_full_story_button"
-=======
-            android:id="@+id/action_button"
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/card_text"
             style="?android:attr/borderlessButtonStyle"
             android:textColor="?attr/colorPrimary"
-<<<<<<< HEAD
             android:text="Read Full Story" />
-=======
-            android:text="Action" />
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 
         <ImageButton
             android:id="@+id/share_button"

@@ -9,7 +9,6 @@
         <item name="colorAccent">#00B0FF</item>
         <!-- Blue -->
     </style>
-<<<<<<< HEAD
     <!--<style name="AppTheme" parent="AppTheme.Base"></style>-->
 
     <style name="WithActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -19,7 +18,4 @@
         <item name="android:listDivider">@color/white</item>
     </style>
 
-=======
-    <style name="AppTheme" parent="AppTheme.Base"></style>
->>>>>>> 0244bd8282806c782481903302b56651688d09cf
 </resources>
