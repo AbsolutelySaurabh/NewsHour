@@ -35,6 +35,11 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.squareup.picasso:picasso:2.5.1'
     compile 'com.github.bumptech.glide:glide:3.6.0'
+<<<<<<< HEAD
     testCompile 'junit:junit:4.12'
     debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
+=======
+
+    testCompile 'junit:junit:4.12'
+>>>>>>> 0244bd8282806c782481903302b56651688d09cf
 }
