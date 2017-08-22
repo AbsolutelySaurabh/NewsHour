@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -27,6 +28,9 @@ public class WebViewActivity extends AppCompatActivity {
 //         myWebView.getSettings().setJavaScriptEnabled(true);
 
         myWebView.setWebViewClient(new WebViewClient());
+
+        myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        myWebView.getSettings().setAppCacheMaxSize(1024 * 1024 * 8);
 
         Intent i = getIntent();
         String url = i.getStringExtra("articleUrl");

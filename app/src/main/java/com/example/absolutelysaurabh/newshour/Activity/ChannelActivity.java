@@ -24,9 +24,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.absolutelysaurabh.newshour.BookMarks.BookmarksDbHelper;
+import com.example.absolutelysaurabh.newshour.Adapter.ChannelActivityContentAdapter;
 import com.example.absolutelysaurabh.newshour.BookMarks.NewsDbHelper;
 import com.example.absolutelysaurabh.newshour.Config.Config;
+import com.example.absolutelysaurabh.newshour.Model.News;
 import com.example.absolutelysaurabh.newshour.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -48,22 +49,15 @@ public class ChannelActivity extends AppCompatActivity {
     public static String channels[] = {"Guardian","TOI", "ESPN", "TechCrunch", "MTVnews", "HackerNews", "TheHindu",
      "TechRadar", "CNN", "FinancialTimes", "Mashable", "FoxSports"};
 
-    private BookmarksDbHelper bookmarksDbHelper;
+    private NewsDbHelper bookmarksDbHelper;
     private NewsDbHelper simpleNewsDbHelper;
-
-    public static ArrayList<String> al_news_title;
-    public static ArrayList<String> al_news_desc;
-    public static ArrayList<String> al_news_url;
-    public static ArrayList<String> al_news_urlToImage;
-    public static ArrayList<String> al_news_publishedAt;
+    public static ArrayList<News> al_news;
 
     public static final String EXTRA_POSITION = "position";
     public static String NEWS_URL = "";
-    ContentAdapter adapter;
+    ChannelActivityContentAdapter adapter;
     RecyclerView recyclerView;
     View listItemView;
-
-    Drawable[] channelsPictures;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,22 +67,9 @@ public class ChannelActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Set Collapsing Toolbar layout to the screen
+        al_news = new ArrayList<>();
 
-        al_news_desc = new ArrayList<>();
-        al_news_title = new ArrayList<>();
-        al_news_publishedAt = new ArrayList<>();
-        al_news_url = new ArrayList<>();
-        al_news_urlToImage = new ArrayList<>();
-
-        Resources resources = getApplicationContext().getResources();
-        TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-        channelsPictures = new Drawable[a.length()];
-        for (int i = 0; i < channelsPictures.length; i++) {
-
-            channelsPictures[i] = a.getDrawable(i);
-        }
-
-        bookmarksDbHelper = new BookmarksDbHelper(getApplicationContext());
+        bookmarksDbHelper = new NewsDbHelper(getApplicationContext());
         simpleNewsDbHelper = new NewsDbHelper(getApplicationContext());
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
@@ -103,8 +84,6 @@ public class ChannelActivity extends AppCompatActivity {
             NEWS_URL = Config.THEGUARDIAN_URL + Config.API_KEY;
             collapsingToolbar.setTitle("The Guardian");
             Picasso.with(this).load(R.drawable.guardian).error(R.drawable.guardian).into(newsImage);
-
-
 
         }else
             if(position == 1){
@@ -196,156 +175,6 @@ public class ChannelActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        public ImageView picture;
-        public TextView title;
-        public TextView description;
-
-        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-
-            super(inflater.inflate(R.layout.item_tech, parent, false));
-            picture = (ImageView) itemView.findViewById(R.id.card_image);
-            title = (TextView) itemView.findViewById(R.id.card_title);
-            description = (TextView) itemView.findViewById(R.id.card_text);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, DetailsActivity.class);
-
-                    Bundle bund = new Bundle();
-                    bund.putInt("tab",2);
-                    bund.putInt(DetailsActivity.EXTRA_POSITION,getAdapterPosition());
-
-                    intent.putExtra("bundle", bund);
-                    context.startActivity(intent);
-                }
-            });
-
-            // Adding Snackbar to Action Button inside card
-            Button button = (Button)itemView.findViewById(R.id.read_full_story_button);
-            button.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-
-                    Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
-
-                    intent.putExtra("articleUrl", al_news_url.get(getAdapterPosition()));
-
-                    startActivity(intent);
-                }
-            });
-
-            final ImageButton favoriteImageButton = (ImageButton) itemView.findViewById(R.id.favorite_button);
-            favoriteImageButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-
-                    SQLiteDatabase db = bookmarksDbHelper.getReadableDatabase();
-                    Cursor rs = db.rawQuery("SELECT * FROM bookmarks",null);
-                    int flag=0;
-                    boolean isInserted = false;
-                    if(rs.moveToFirst()){
-
-                        while(!rs.isAfterLast()){
-
-                            String title_in_db = rs.getString(rs.getColumnIndex(BookmarksDbHelper.COLUMN_NEWS_TITLE));
-                            if(title_in_db.equals(al_news_title.get(getAdapterPosition()))){
-                                flag=1;
-                            }
-                            rs.moveToNext();
-                        }
-                    }
-                    if(flag==0){
-
-                        isInserted =  bookmarksDbHelper.insertNews(al_news_title.get(getAdapterPosition()), al_news_desc.get(getAdapterPosition()),
-                                al_news_url.get(getAdapterPosition()), al_news_urlToImage.get(getAdapterPosition()),
-                                al_news_publishedAt.get(getAdapterPosition()));
-                    }
-
-                    if(isInserted){
-                        boolean isBookmarked = simpleNewsDbHelper.updateNews(getAdapterPosition(),al_news_title.get(getAdapterPosition()),
-                                al_news_desc.get(getAdapterPosition()), al_news_url.get(getAdapterPosition()),
-                                al_news_urlToImage.get(getAdapterPosition()), al_news_publishedAt.get(getAdapterPosition()), 1);
-
-                        if(isBookmarked){
-
-                            favoriteImageButton.setClickable(false);
-                            favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
-                            Snackbar.make(v, "Added to Favorites ", Snackbar.LENGTH_LONG).show();
-                        }
-
-                    }else {
-
-                        if(flag==1){
-
-                            favoriteImageButton.setClickable(false);
-                            favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
-                            Snackbar.make(v, "Already added! ", Snackbar.LENGTH_LONG).show();
-                        }else {
-
-                            Snackbar.make(v, "Adding bookmark failed!! ", Snackbar.LENGTH_LONG).show();
-                        }
-                    }
-                }
-            });
-
-            ImageButton shareImageButton = (ImageButton) itemView.findViewById(R.id.share_button);
-            shareImageButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-
-                    Intent sendIntent = new Intent();
-                    sendIntent.setAction(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, al_news_url.get(getAdapterPosition()));
-                    sendIntent.setType("text/plain");
-                    startActivity(Intent.createChooser(sendIntent,("Share news via:")));
-                    Snackbar.make(v, "Sharing....", Snackbar.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }
-
-    /**
-     * Adapter to display recycler view.
-     */
-    public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of Card in RecyclerView.
-        private final int LENGTH = al_news_desc.size();
-
-        private Context context;
-
-        public ContentAdapter(Context context) {
-
-            this.context = context;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-
-            Log.e("OnBindViiewHolder: ", al_news_title.get(position));
-            Picasso.with(getApplicationContext()).load(al_news_urlToImage.get(position))
-                    .error(channelsPictures[position % channelsPictures.length]).into(holder.picture);
-
-            holder.title.setText(al_news_title.get(position));
-            holder.description.setText(al_news_desc.get(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return LENGTH;
-        }
-    }
-
-
     public void getChannelWiseNews(String NEWS_REQUEST_URL){
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -357,24 +186,21 @@ public class ChannelActivity extends AppCompatActivity {
                     JSONArray responseArray = responseObject.getJSONArray("articles");
                     for(int i=0;i<responseArray.length();i++){
 
-                        JSONObject currentNews = responseArray.getJSONObject(i);
+                        JSONObject currentNewsObject = responseArray.getJSONObject(i);
 
-                        String title = currentNews.getString("title");
-                        String description = currentNews.getString("description");
-                        String url = currentNews.getString("url");
-                        String urlToImage = currentNews.getString("urlToImage");
-                        String publishedAt = currentNews.getString("publishedAt");
+                        String title = currentNewsObject.getString("title");
+                        String description = currentNewsObject.getString("description");
+                        String url = currentNewsObject.getString("url");
+                        String urlToImage = currentNewsObject.getString("urlToImage");
+                        String publishedAt = currentNewsObject.getString("publishedAt");
 
-                        al_news_desc.add(description);
-                        al_news_urlToImage.add(urlToImage);
-                        al_news_publishedAt.add(publishedAt);
-                        al_news_title.add(title);
-                        al_news_url.add(url);
+                        News currentNews = new News(title, description, publishedAt, url, urlToImage);
+                        al_news.add(currentNews);
 
                         Log.d("QUESTIONS: "+ String.valueOf(i), title);
                     }
 
-                    adapter = new ContentAdapter(recyclerView.getContext());
+                    adapter = new ChannelActivityContentAdapter(recyclerView.getContext(), al_news);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e){

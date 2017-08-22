@@ -1,6 +1,7 @@
 package com.example.absolutelysaurabh.newshour.Activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -9,12 +10,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,7 +28,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.absolutelysaurabh.newshour.BookMarks.BookmarksDbHelper;
+import com.example.absolutelysaurabh.newshour.BookMarks.NewsDbHelper;
 import com.example.absolutelysaurabh.newshour.R;
 import com.squareup.picasso.Picasso;
 
@@ -50,7 +52,7 @@ public class BookmarksActivity extends AppCompatActivity {
     View listItemView;
 
     /** Database helper that will provide us access to the database */
-    private BookmarksDbHelper mDbHelper;
+    private NewsDbHelper bookmarksDbHelper;
 
     Drawable[] channelsPictures;
 
@@ -71,7 +73,7 @@ public class BookmarksActivity extends AppCompatActivity {
         al_news_url = new ArrayList<>();
         al_news_urlToImage = new ArrayList<>();
 
-        mDbHelper = new BookmarksDbHelper(getApplicationContext());
+        bookmarksDbHelper = new NewsDbHelper(getApplicationContext());
 
         Resources resources = getApplicationContext().getResources();
         TypedArray a = resources.obtainTypedArray(R.array.places_picture);
@@ -85,12 +87,67 @@ public class BookmarksActivity extends AppCompatActivity {
 
         getBookmarkedNewsFromDatabase();
 
+        if((new NewsDbHelper(getApplicationContext())).numberOfRowsInBookmarks()==0){
+
+            View l = findViewById(R.id.empty_view);
+            l.setVisibility(View.VISIBLE);
+        }
+
         Log.e("Bookmarks: NEWS_URL: ", NEWS_URL);
 
         adapter = new ContentAdapter(recyclerView.getContext());
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        ItemTouchHelper.SimpleCallback simpleCallback =
+                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+                    @Override
+                    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+
+                    @Override
+                    public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
+                        final int position = viewHolder.getAdapterPosition(); //get position which is swipe
+
+                        if (direction == ItemTouchHelper.RIGHT) {    //if swipe left
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(BookmarksActivity.this); //alert for confirm to delete
+                            builder.setMessage("Are you sure to delete?");    //set message
+                            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() { //when click on DELETE
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    bookmarksDbHelper.deleteBookmark(position);
+
+                                    al_news_desc.remove(position);
+                                    al_news_publishedAt.remove(position);
+                                    al_news_title.remove(position);
+                                    al_news_url.remove(position);
+                                    al_news_urlToImage.remove(position);
+
+                                    Intent intent = new Intent(getApplicationContext(), BookmarksActivity.class);
+                                    finish();
+                                    startActivity(intent);
+
+                                    dialog.dismiss();
+                                    return;
+
+                                }
+                            }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {  //not removing items if cancel is done
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+
+                                    dialog.dismiss();
+                                }
+                            }).show();  //show alert dialog
+                        }
+                    }
+                };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView); //set swipe to recylcerview
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
     }
@@ -115,7 +172,7 @@ public class BookmarksActivity extends AppCompatActivity {
                     Intent intent = new Intent(context, DetailsActivity.class);
 
                     Bundle bund = new Bundle();
-                    bund.putInt("tab",2);
+                    bund.putInt("tab",4);
                     bund.putInt(DetailsActivity.EXTRA_POSITION,getAdapterPosition());
 
                     intent.putExtra("bundle", bund);
@@ -128,8 +185,12 @@ public class BookmarksActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    Snackbar.make(v, "Action is pressed",
-                            Snackbar.LENGTH_LONG).show();
+
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, WebViewActivity.class);
+
+                    intent.putExtra("articleUrl", al_news_url.get(getAdapterPosition()));
+                    context.startActivity(intent);
                 }
             });
 
@@ -158,7 +219,7 @@ public class BookmarksActivity extends AppCompatActivity {
      */
     public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of Card in RecyclerView.
-        private final int LENGTH = mDbHelper.numberOfRows();
+        private final int LENGTH = bookmarksDbHelper.numberOfRowsInBookmarks();
         private Context context;
 
         public ContentAdapter(Context context) {
@@ -175,10 +236,18 @@ public class BookmarksActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
 
-            Picasso.with(getApplicationContext()).load(al_news_urlToImage.get(position))
-                    .error(channelsPictures[position % channelsPictures.length]).into(holder.picture);
-            holder.title.setText(al_news_title.get(position));
-            holder.description.setText(al_news_desc.get(position));
+            try {
+
+                Picasso.with(getApplicationContext()).load(al_news_urlToImage.get(position))
+                        .error(channelsPictures[position % channelsPictures.length]).into(holder.picture);
+                holder.title.setText(al_news_title.get(position));
+                holder.description.setText(al_news_desc.get(position));
+
+                Log.e("position:  AGAIN: ", String.valueOf(position));
+            }catch(IndexOutOfBoundsException e){
+
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -189,17 +258,18 @@ public class BookmarksActivity extends AppCompatActivity {
 
     public void getBookmarkedNewsFromDatabase(){
 
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        SQLiteDatabase db = bookmarksDbHelper.getReadableDatabase();
         Cursor rs = db.rawQuery("SELECT * FROM bookmarks",null);
 
         if (rs.moveToFirst()) {
             while (!rs.isAfterLast()) {
 
-                String title = rs.getString(rs.getColumnIndex(BookmarksDbHelper.COLUMN_NEWS_TITLE));
-                String desc = rs.getString(rs.getColumnIndex(BookmarksDbHelper.COLUMN_NEWS_DESC));
-                String urlToImage = rs.getString(rs.getColumnIndex(BookmarksDbHelper.COLUMN_NEWS_URLTOIMAGE));
-                String url = rs.getString(rs.getColumnIndex(BookmarksDbHelper.COLUMN_NEWS_URL));
-                String publishedAt = rs.getString(rs.getColumnIndex(BookmarksDbHelper.COLUMN_NEWS_PUBLISHEDAT));
+//                String item_index = rs.getString(rs.getColumnIndex(NewsDbHelper.ITEM_INDEX));
+                String title = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_TITLE));
+                String desc = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_DESC));
+                String urlToImage = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_URLTOIMAGE));
+                String url = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_URL));
+                String publishedAt = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_PUBLISHEDAT));
 
                 Log.e("title: ", title);
 
@@ -234,7 +304,7 @@ public class BookmarksActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
 
             //This is delete all bookmarks option.
-            mDbHelper.deleteAll();
+            bookmarksDbHelper.deleteAllBookmarks();
 
             Intent intent = new Intent(getApplicationContext(), BookmarksActivity.class);
             finish();
@@ -242,6 +312,13 @@ public class BookmarksActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();
+        super.onBackPressed();
     }
 
     @Override
