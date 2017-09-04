@@ -125,7 +125,7 @@ public class ChannelActivityViewHolder extends RecyclerView.ViewHolder {
 
                         favoriteImageButton.setClickable(false);
                         favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
-                        Snackbar.make(v, "Added to Favorites ", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(v, "Added to Bookmarks. ", Snackbar.LENGTH_SHORT).show();
 
                 }else {
 

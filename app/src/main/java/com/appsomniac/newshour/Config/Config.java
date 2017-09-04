@@ -6,6 +6,8 @@ package com.appsomniac.newshour.Config;
 
 public class Config {
 
+    public static String PLAYSTORE_LINK = "https://play.google.com/store/apps/details?id=com.appsomniac.newshour&hl=en";
+
     public static String API_KEY = "0cd429a696954c2b837a14efc187a904";
 
     public static String TOI_URL = "https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=top&apiKey=";

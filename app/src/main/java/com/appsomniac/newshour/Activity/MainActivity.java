@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
@@ -32,8 +33,8 @@ import android.view.View;
 import com.appsomniac.newshour.ClassFragments.ChannelFragment;
 import com.appsomniac.newshour.ClassFragments.HeadlineFragment;
 import com.appsomniac.newshour.ClassFragments.TechFragment;
+import com.appsomniac.newshour.Config.Config;
 import com.appsomniac.newshour.R;
-import com.appsomniac.newshour.Fragment.SettingsFragment;
 import com.appsomniac.newshour.sync.NewsHourSyncAdapter;
 
 import java.util.ArrayList;
@@ -132,10 +133,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             viewPager.setCurrentItem(2);
 
         } else
-
-        if (id == R.id.nav_aboutUs) {
-            viewPager.setCurrentItem(2);
-        }else
         if(id ==  R.id.nav_bookmarks){
 
             Intent intent = new Intent(this, BookmarksActivity.class);
@@ -159,10 +156,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else
         if(id == R.id.nav_share){
 
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
+            Intent sendIntent = new Intent(android.content.Intent.ACTION_SEND);
             sendIntent.setType("text/plain");
-            this.startActivity(Intent.createChooser(sendIntent,("Share App via:")));
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "NewsHour: The all in one news app");
+            sendIntent.putExtra(android.content.Intent.EXTRA_TEXT, Config.PLAYSTORE_LINK);
+            startActivity(Intent.createChooser(sendIntent, "Share App via: "));
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -211,10 +209,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch(item.getItemId()){
 
             case R.id.action_share:
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
+
+                Intent sendIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sendIntent.setType("text/plain");
-                this.startActivity(Intent.createChooser(sendIntent,("Share news via:")));
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "NewsHour: The all in one news app");
+                sendIntent.putExtra(android.content.Intent.EXTRA_TEXT, Config.PLAYSTORE_LINK);
+                startActivity(Intent.createChooser(sendIntent, "Share App via: "));
 
         }
         return super.onOptionsItemSelected(item);

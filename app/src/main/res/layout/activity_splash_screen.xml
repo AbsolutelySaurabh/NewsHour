@@ -11,7 +11,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/splash_back"
+            android:background="@drawable/splash_back_2"
             android:alpha="0.7"
             />
 
@@ -35,10 +35,12 @@
                 android:text="NewsHour"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_marginBottom="30dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="7dp"
                 android:fontFamily="sans-con"
                 android:textSize="24sp"
                 />
+
         </LinearLayout>
 
     </RelativeLayout>

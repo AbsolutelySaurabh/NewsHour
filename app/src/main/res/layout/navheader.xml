@@ -10,11 +10,24 @@
         android:background="@color/colorPrimary">
 
         <ImageView
+            android:id="@+id/nav_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@mipmap/ic_launcher_round"
             android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nav_image"
+            android:layout_centerHorizontal="true"
+            android:text="NewsHour"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            />
+
 
     </RelativeLayout>
 </LinearLayout>

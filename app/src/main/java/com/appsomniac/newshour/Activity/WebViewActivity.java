@@ -6,16 +6,18 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
+import com.appsomniac.newshour.Config.Config;
 import com.appsomniac.newshour.R;
 
 public class WebViewActivity extends AppCompatActivity {
 
     String newsUrl = new String();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +27,6 @@ public class WebViewActivity extends AppCompatActivity {
          myWebView.getSettings().setJavaScriptEnabled(false);
 
         myWebView.setWebViewClient(new WebViewClient());
-
         myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         myWebView.getSettings().setAppCacheMaxSize(1024 * 1024 * 8);
 
@@ -50,17 +51,35 @@ public class WebViewActivity extends AppCompatActivity {
         // User clicked on a menu option in the app bar overflow menu
         switch (item.getItemId()) {
             // Respond to a click on the "Insert dummy data" menu option
-            case R.id.shareit:
+            case R.id.shareNews:
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = newsUrl;
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "NewsFeed app");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, "NewsHour: The all in one news app");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(sharingIntent, "Share App Via"));
+                startActivity(Intent.createChooser(sharingIntent, "Share news via: "));
 
                 return true;
 
+            case R.id.shareApp:
+
+                Intent sendIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sendIntent.setType("text/plain");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "NewsHour: The all in one news app");
+                sendIntent.putExtra(android.content.Intent.EXTRA_TEXT, Config.PLAYSTORE_LINK);
+                startActivity(Intent.createChooser(sendIntent, "Share App via: "));
+
+                return true;
+
+
+
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }

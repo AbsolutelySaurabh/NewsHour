@@ -16,6 +16,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.appsomniac.newshour.ClassFragments.HeadlineFragment;
@@ -56,8 +57,9 @@ public class DetailsActivity extends AppCompatActivity {
         final int tab_opened = bundle.getInt("tab");
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.getSettings().setJavaScriptEnabled(false);
         myWebView.setWebViewClient(new WebViewClient());
+
 
         final Resources resources = getResources();
 
@@ -74,7 +76,7 @@ public class DetailsActivity extends AppCompatActivity {
             collapsingToolbar.setTitle(HeadlineFragment.al_news.get(position).getTitle());
             newsDescription.setText(HeadlineFragment.al_news.get(position).getDescription());
             Picasso.with(this).load(HeadlineFragment.al_news.get(position).getUrlToImage())
-                    .error(R.drawable.icon_5).centerCrop().resize(320, 320).into(newsImage);
+                    .error(R.drawable.splash_back_2).centerCrop().resize(320, 320).into(newsImage);
 
             favoriteImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -92,12 +94,12 @@ public class DetailsActivity extends AppCompatActivity {
         if(tab_opened == 2){
 
             myWebView.loadUrl(ChannelActivity.al_news.get(position).getUrl());
-            news_title.setText(HeadlineFragment.al_news.get(position).getTitle());
+            news_title.setText(ChannelActivity.al_news.get(position).getTitle());
 
             collapsingToolbar.setTitle(ChannelActivity.al_news.get(position).getTitle());
             newsDescription.setText(ChannelActivity.al_news.get(position).getDescription());
             Picasso.with(this).load(ChannelActivity.al_news.get(position).getUrlToImage())
-                    .error(R.drawable.icon_5).centerCrop().resize(320, 320).into(newsImage);
+                    .error(R.drawable.splash_back_2).centerCrop().resize(320, 320).into(newsImage);
 
             favoriteImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -120,7 +122,7 @@ public class DetailsActivity extends AppCompatActivity {
                 collapsingToolbar.setTitle(TechFragment.al_news.get(position).getTitle());
                 newsDescription.setText(TechFragment.al_news.get(position).getDescription());
                 Picasso.with(this).load(TechFragment.al_news.get(position).getUrlToImage())
-                        .error(R.drawable.icon_5).centerCrop().resize(320, 320).into(newsImage);
+                        .error(R.drawable.splash_back_2).centerCrop().resize(320, 320).into(newsImage);
 
                 favoriteImageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -143,7 +145,7 @@ public class DetailsActivity extends AppCompatActivity {
                     collapsingToolbar.setTitle(BookmarksActivity.al_news.get(position).getTitle());
                     newsDescription.setText(BookmarksActivity.al_news.get(position).getDescription());
                     Picasso.with(this).load(BookmarksActivity.al_news.get(position).getUrlToImage())
-                    .error(R.drawable.recode_2).centerCrop().resize(320, 320).into(newsImage);
+                    .error(R.drawable.splash_back_2).centerCrop().resize(320, 320).into(newsImage);
 
                     favoriteImageButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -155,7 +157,6 @@ public class DetailsActivity extends AppCompatActivity {
                                     getApplicationContext(), v);
                         }
                     });
-
 
                 }
     }
@@ -204,7 +205,7 @@ public class DetailsActivity extends AppCompatActivity {
 
                 favoriteImageButton.setClickable(false);
                 favoriteImageButton.setColorFilter(Color.rgb(255,255,255));
-                Snackbar.make(v, "Added to Favorites ", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(v, "Added to Bookmarks. ", Snackbar.LENGTH_SHORT).show();
 
         }else {
 
@@ -221,13 +222,11 @@ public class DetailsActivity extends AppCompatActivity {
 
         rs.close();
         db.close();
-
     }
 
 
     @Override
     public boolean onSupportNavigateUp(){
-
         finish();
         return true;
     }

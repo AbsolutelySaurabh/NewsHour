@@ -41,12 +41,12 @@
                     android:title="Share"
                     />
 
-                <item
-                    android:id="@+id/nav_aboutUs"
-                    android:icon="@drawable/ic_developer_80_mode_black_24dp"
-                    android:title="About Us"
+                <!--<item-->
+                    <!--android:id="@+id/nav_aboutUs"-->
+                    <!--android:icon="@drawable/ic_developer_80_mode_black_24dp"-->
+                    <!--android:title="About Us"-->
 
-                    />
+                    <!--/>-->
                 <item
                     android:id="@+id/nav_legalInfo"
                     android:icon="@drawable/ic_info_80_black_24dp"

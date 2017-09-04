@@ -104,7 +104,7 @@ public class BookmarksActivity extends AppCompatActivity {
                         if (direction == ItemTouchHelper.RIGHT) {    //if swipe left
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(BookmarksActivity.this); //alert for confirm to delete
-                            builder.setMessage("Are you sure to delete?");    //set message
+                            builder.setMessage("Delete this Bookmark?");    //set message
                             builder.setPositiveButton("YES", new DialogInterface.OnClickListener() { //when click on DELETE
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -182,10 +182,15 @@ public class BookmarksActivity extends AppCompatActivity {
                 }
             });
 
-            ImageButton favoriteImageButton =
-                    (ImageButton) itemView.findViewById(R.id.favorite_button);
+            ImageButton deleteImageButton = (ImageButton) itemView.findViewById(R.id.delete_button);
+            deleteImageButton.setColorFilter(Color.rgb(30,144,255));
+            deleteImageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
+                    Snackbar.make(v, "Swipe Right to Delete!", Snackbar.LENGTH_SHORT).show();
+                }
+            });
 
             ImageButton shareImageButton = (ImageButton) itemView.findViewById(R.id.share_button);
             shareImageButton.setOnClickListener(new View.OnClickListener(){

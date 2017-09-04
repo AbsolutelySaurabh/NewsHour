@@ -7,9 +7,18 @@
     <item
 
         android:icon="@drawable/ic_share"
-        android:id="@+id/shareit"
-        app:showAsAction="always"
-        android:title="share"
+        android:id="@+id/shareNews"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Share News"
         />
+
+    <item
+        android:id="@+id/shareApp"
+        android:title="Share App"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+
 
 </menu>

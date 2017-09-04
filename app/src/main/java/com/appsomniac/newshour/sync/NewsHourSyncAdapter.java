@@ -53,9 +53,9 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
     public final String LOG_TAG = NewsHourSyncAdapter.class.getSimpleName();
     // Interval at which to sync with the news, in seconds.
     // 60 seconds (1 minute) * 180 = 3 hours
-    public static final int SYNC_INTERVAL = 600 * 110;
+    public static final int SYNC_INTERVAL = 600 * 1000;
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;
-    private static final long DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
+    private static final long DAY_IN_MILLIS = 1000 * 60 * 24;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
 
     public static String GET_NEWS_URL_TOI = "", GET_NEWS_URL_CNN = "", GET_NEWS_URL_HINDU = "",
@@ -91,8 +91,8 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
         buildUrl(GET_NEWS_URL_HINDU, 0);
         buildUrl(GET_NEWS_URL_TOI, 0);
-        buildUrl(GET_NEWS_URL_CNN, 0);
         buildUrl(GET_NEWS_URL_GUARDIAN, 0);
+        buildUrl(GET_NEWS_URL_CNN, 0);
 
         buildUrl(GET_NEWS_URL_TechCrunch, 1);
         buildUrl(GET_NEWS_URL_TechRadar, 1);
@@ -257,7 +257,7 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
             String lastNotificationKey = context.getString(R.string.pref_last_notification);
             long lastSync = prefs.getLong(lastNotificationKey, 0);
 
-            //if (System.currentTimeMillis() - lastSync >= DAY_IN_MILLIS) {
+            if (System.currentTimeMillis() - lastSync >= DAY_IN_MILLIS) {
 
                 // Last sync was more than 1 day ago, let's send a notification with the weather.
                 SQLiteDatabase db = newsDbHelper.getReadableDatabase();
@@ -271,9 +271,7 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
                          rs = db.rawQuery("SELECT * FROM techNews", null);
                     }
 
-                if (rs.moveToFirst()) {
-
-                    while (!rs.isAfterLast()) {
+                if (rs.moveToLast()) {
 
                         String title = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_TITLE));
                         String description = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_DESC));
@@ -329,7 +327,7 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
                        // mNotificationManager.cancelAll();
 
                         rs.moveToNext();
-                   // }
+
                 }
                 rs.close();
             }

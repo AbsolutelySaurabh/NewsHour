@@ -40,7 +40,7 @@ public class TechFragContentAdapter extends RecyclerView.Adapter<TechFragViewHol
 
         try {
 
-            Picasso.with(context).load(al_news.get(position).getUrlToImage()).error(R.drawable.recode_2).resize(300, 150).centerCrop()
+            Picasso.with(context).load(al_news.get(position).getUrlToImage()).error(R.drawable.recode_2).centerCrop().resize(300, 180).centerCrop()
                     .into(holder.picture);
             holder.title.setText(al_news.get(position).getTitle());
             holder.description.setText(al_news.get(position).getDescription());

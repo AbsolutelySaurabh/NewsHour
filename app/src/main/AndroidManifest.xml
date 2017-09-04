@@ -37,7 +37,11 @@
             android:name=".Activity.BookmarksActivity"
             android:label="Your Bookmarks"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activity.WebViewActivity" />
+        <activity
+            android:name=".Activity.WebViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/WithActionBar"
+            />
 
         <provider
             android:name=".data.DummyProvider"
