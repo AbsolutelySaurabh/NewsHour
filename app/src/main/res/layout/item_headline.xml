@@ -7,14 +7,17 @@
     android:padding="@dimen/md_keylines"
     android:background="?android:attr/selectableItemBackground">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/list_avatar"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/test_2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/headline_icon_test"
         />
-
 
     <TextView
         android:id="@+id/list_title"
@@ -49,5 +52,6 @@
         android:visibility="invisible"
         android:layout_centerInParent="true"
         android:layout_gravity="center"/>
+    </RelativeLayout>
 
 </RelativeLayout >

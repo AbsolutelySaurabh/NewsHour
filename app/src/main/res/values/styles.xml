@@ -2,11 +2,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <!-- Light Indigo -->
-        <item name="colorPrimaryDark">#3949AB</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <!-- Dark Indigo -->
-        <item name="colorAccent">#00B0FF</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <!-- Blue -->
     </style>
     <!--<style name="AppTheme" parent="AppTheme.Base"></style>-->
@@ -17,5 +17,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:listDivider">@color/white</item>
     </style>
+
+
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:listDivider">@color/white</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <style name="AppTheme.Base.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.Base.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

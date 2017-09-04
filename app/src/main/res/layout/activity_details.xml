@@ -29,7 +29,7 @@
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:background="@drawable/a"
+                tools:background="@drawable/t"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
@@ -53,27 +53,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="@dimen/md_keylines">
+            android:paddingTop="@dimen/md_keylines"
+            android:padding="10dp"
+            >
 
             <TextView
-                android:paddingLeft="10dp"
+                android:id="@+id/news_titile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorAccent"
-                android:text="Description"
+                android:layout_marginTop="12dp"
+                tools:text="THis is the titile od the nes we can enter whatenece ew evan in ri rhe smdhd ir o dkns isjkns cnkmso,me abd"
                 android:textSize="@dimen/article_titles"
                 android:layout_marginBottom="@dimen/md_keylines" />
 
             <TextView
-                android:paddingLeft="10dp"
-                android:paddingRight="@dimen/md_keylines"
                 android:id="@+id/place_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/detail_desc" />
+                tools:text="THis is he detail secskdc dncdhjdhj dncjbjd cnndndjcnjdncjdjcnjdcjdcjdbjcbjdbcjdbjcbdjcbjdbcjdbjcbjdcbjdjc" />
 
             <TextView
-                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorAccent"
@@ -98,9 +98,18 @@
 
             </FrameLayout>
 
-
         </LinearLayout>
 
-
     </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom|end"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/bookmark_image_24dp" />
+
 </android.support.design.widget.CoordinatorLayout>

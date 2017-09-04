@@ -1,17 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single"
+        >
         <item
-            android:icon="@drawable/ic_home_black_24dp"
-            android:tint="@color/button_grey"
-            android:title="One" />
+            android:id="@+id/nav_headlines"
+            android:icon="@drawable/ic_trending_80_up_black_24dp"
+            android:title="Headlines" />
         <item
-            android:icon="@drawable/ic_favorite_black_24dp"
-            android:tint="@color/button_grey"
-            android:title="Two" />
+            android:id="@+id/nav_channels"
+            android:icon="@drawable/ic_channel_80_for_black_24dp"
+            android:title="Browse Channels"
+            />
+
         <item
-            android:icon="@drawable/ic_bookmark_border_black_24dp"
-            android:tint="@color/button_grey"
-            android:title="Three" />
+            android:id="@+id/nav_techNews"
+            android:icon="@drawable/ic_tech_80_black_24dp"
+            android:title="TechNews"
+            />
+
+        <item
+            android:id="@+id/nav_bookmarks"
+            android:icon="@drawable/ic_bookmark_80_black_24dp"
+            android:title="Bookmarks"
+            />
     </group>
+
+    <group
+        android:checkableBehavior="single"
+        >
+
+        <item android:title="Other">
+            <menu>
+
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_share_80_black_24dp"
+                    android:title="Share"
+                    />
+
+                <item
+                    android:id="@+id/nav_aboutUs"
+                    android:icon="@drawable/ic_developer_80_mode_black_24dp"
+                    android:title="About Us"
+
+                    />
+                <item
+                    android:id="@+id/nav_legalInfo"
+                    android:icon="@drawable/ic_info_80_black_24dp"
+                    android:title="Legal Info" />
+            </menu>
+        </item>
+    </group>
+
 </menu>

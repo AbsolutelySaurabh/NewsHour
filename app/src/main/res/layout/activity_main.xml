@@ -49,7 +49,7 @@
             android:layout_marginRight="@dimen/md_keylines"
             android:src="@drawable/bookmark_image_24dp"
             app:fabSize="normal"
-            app:backgroundTint="#00B0FF" />
+            />
 
     </android.support.design.widget.CoordinatorLayout>
 

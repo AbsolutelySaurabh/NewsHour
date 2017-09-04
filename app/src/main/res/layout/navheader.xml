@@ -2,7 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/navheader_height"
-    android:background="?attr/colorPrimaryDark"
-    android:orientation="vertical"
-    android:padding="@dimen/md_keylines">
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
 </LinearLayout>

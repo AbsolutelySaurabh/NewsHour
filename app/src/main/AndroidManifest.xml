@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.absolutelysaurabh.newshour">
+    package="com.appsomniac.newshour">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Base">
         <activity
-            android:name=".Activity.MainActivity"
-            android:screenOrientation="portrait">
+            android:name=".Activity.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activity.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.DetailsActivity"
             android:screenOrientation="portrait" />
@@ -31,7 +37,38 @@
             android:name=".Activity.BookmarksActivity"
             android:label="Your Bookmarks"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activity.WebViewActivity"></activity>
+        <activity android:name=".Activity.WebViewActivity" />
+
+        <provider
+            android:name=".data.DummyProvider"
+            android:authorities="@string/content_authority"
+            android:exported="false"
+            android:syncable="true" />
+
+        <!-- SyncAdapter's dummy authentication service -->
+        <service android:name=".sync.NewsHourAuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+
+        <!-- The SyncAdapter service -->
+        <service
+            android:name=".sync.NewsHourSyncService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+
     </application>
 
 </manifest>
