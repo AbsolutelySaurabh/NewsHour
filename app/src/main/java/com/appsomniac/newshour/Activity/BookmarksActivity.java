@@ -31,6 +31,7 @@ import android.widget.TextView;
 import com.appsomniac.newshour.Model.News;
 import com.appsomniac.newshour.data.NewsDbHelper;
 import com.appsomniac.newshour.R;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -230,8 +231,9 @@ public class BookmarksActivity extends AppCompatActivity {
         public void onBindViewHolder(ViewHolder holder, int position) {
 
             try {
-                Picasso.with(context).load(al_news.get(position).getUrlToImage()).error(R.drawable.recode_2).resize(320, 200).centerCrop()
-                        .into(holder.picture);
+
+                Glide.with(context).load(al_news.get(position).getUrlToImage()).thumbnail(0.5f).into(holder.picture);
+
                 holder.title.setText(al_news.get(position).getTitle());
                 holder.description.setText(al_news.get(position).getDescription());
 

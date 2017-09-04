@@ -25,6 +25,7 @@ import com.appsomniac.newshour.Model.News;
 import com.appsomniac.newshour.R;
 import com.appsomniac.newshour.ViewHolder.HeadLineFragViewHolder;
 import com.appsomniac.newshour.data.NewsDbHelper;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -75,8 +76,9 @@ public class DetailsActivity extends AppCompatActivity {
             news_title.setText(HeadlineFragment.al_news.get(position).getTitle());
             collapsingToolbar.setTitle(HeadlineFragment.al_news.get(position).getTitle());
             newsDescription.setText(HeadlineFragment.al_news.get(position).getDescription());
-            Picasso.with(this).load(HeadlineFragment.al_news.get(position).getUrlToImage())
-                    .error(R.drawable.splash_back_2).centerCrop().resize(320, 320).into(newsImage);
+
+            Glide.with(this).load(HeadlineFragment.al_news.get(position).getUrlToImage()).thumbnail(0.5f).into(newsImage);
+
 
             favoriteImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,8 +100,9 @@ public class DetailsActivity extends AppCompatActivity {
 
             collapsingToolbar.setTitle(ChannelActivity.al_news.get(position).getTitle());
             newsDescription.setText(ChannelActivity.al_news.get(position).getDescription());
-            Picasso.with(this).load(ChannelActivity.al_news.get(position).getUrlToImage())
-                    .error(R.drawable.splash_back_2).centerCrop().resize(320, 320).into(newsImage);
+
+            Glide.with(this).load(ChannelActivity.al_news.get(position).getUrlToImage()).thumbnail(0.5f).into(newsImage);
+
 
             favoriteImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -121,8 +124,9 @@ public class DetailsActivity extends AppCompatActivity {
 
                 collapsingToolbar.setTitle(TechFragment.al_news.get(position).getTitle());
                 newsDescription.setText(TechFragment.al_news.get(position).getDescription());
-                Picasso.with(this).load(TechFragment.al_news.get(position).getUrlToImage())
-                        .error(R.drawable.splash_back_2).centerCrop().resize(320, 320).into(newsImage);
+
+                Glide.with(this).load(TechFragment.al_news.get(position).getUrlToImage()).thumbnail(0.5f).into(newsImage);
+
 
                 favoriteImageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -144,8 +148,9 @@ public class DetailsActivity extends AppCompatActivity {
 
                     collapsingToolbar.setTitle(BookmarksActivity.al_news.get(position).getTitle());
                     newsDescription.setText(BookmarksActivity.al_news.get(position).getDescription());
-                    Picasso.with(this).load(BookmarksActivity.al_news.get(position).getUrlToImage())
-                    .error(R.drawable.splash_back_2).centerCrop().resize(320, 320).into(newsImage);
+
+                    Glide.with(this).load(BookmarksActivity.al_news.get(position).getUrlToImage()).thumbnail(0.5f).into(newsImage);
+
 
                     favoriteImageButton.setOnClickListener(new View.OnClickListener() {
                         @Override

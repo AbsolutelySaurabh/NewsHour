@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.appsomniac.newshour.Model.News;
 import com.appsomniac.newshour.R;
 import com.appsomniac.newshour.ViewHolder.ChannelActivityViewHolder;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -53,8 +54,11 @@ public class ChannelActivityContentAdapter extends RecyclerView.Adapter<ChannelA
     public void onBindViewHolder(ChannelActivityViewHolder holder, int position) {
 
         try {
-            Picasso.with(context).load(al_news.get(position).getUrlToImage())
-                    .error(R.drawable.recode_2).centerCrop().resize(300, 200).into(holder.picture);
+//            Picasso.with(context).load(al_news.get(position).getUrlToImage())
+//                    .error(R.drawable.recode_2).centerCrop().resize(300, 200).into(holder.picture);
+
+            Glide.with(context).load(al_news.get(position).getUrlToImage()).thumbnail(0.5f).into(holder.picture);
+
 
             holder.title.setText(al_news.get(position).getTitle());
             holder.description.setText(al_news.get(position).getDescription());

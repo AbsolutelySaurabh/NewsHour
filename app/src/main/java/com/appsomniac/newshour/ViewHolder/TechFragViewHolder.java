@@ -86,8 +86,11 @@ public class TechFragViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
-        final ImageButton favoriteImageButton = (ImageButton) itemView.findViewById(R.id.favorite_button);
-        favoriteImageButton.setOnClickListener(new View.OnClickListener(){
+        final ImageButton favoriteImageButton;favoriteImageButton =
+                (ImageButton) itemView.findViewById(R.id.favorite_button);
+        favoriteImageButton.setClickable(true);
+
+        favoriteImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -100,7 +103,9 @@ public class TechFragViewHolder extends RecyclerView.ViewHolder {
                     while(!rs.isAfterLast()){
 
                         String title_in_db = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_TITLE));
+
                         if(title_in_db.equals(al_news.get(getAdapterPosition()).getTitle())){
+
                             flag=1;
                         }
                         rs.moveToNext();
@@ -126,9 +131,19 @@ public class TechFragViewHolder extends RecyclerView.ViewHolder {
 
                 if(isInserted){
 
-                    favoriteImageButton.setClickable(false);
-                    favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
-                    Snackbar.make(v, "Added to Bookmarks. ", Snackbar.LENGTH_SHORT).show();
+                    boolean isBookmarked = techDbHelper.updateNewsTech(getAdapterPosition(),
+                            al_news.get(getAdapterPosition()).getTitle(),
+                            al_news.get(getAdapterPosition()).getDescription(),
+                            al_news.get(getAdapterPosition()).getUrl(),
+                            al_news.get(getAdapterPosition()).getUrlToImage(),
+                            al_news.get(getAdapterPosition()).getPublishedAt(), 1);
+
+                    if(isBookmarked){
+
+                        favoriteImageButton.setClickable(false);
+                        favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
+                        Snackbar.make(v, "Added to Bookmarks. ", Snackbar.LENGTH_SHORT).show();
+                    }
 
                 }else {
 
@@ -142,85 +157,11 @@ public class TechFragViewHolder extends RecyclerView.ViewHolder {
                         Snackbar.make(v, "Adding bookmark failed!! ", Snackbar.LENGTH_SHORT).show();
                     }
                 }
+
+                rs.close();
+                db.close();
             }
         });
-
-
-
-
-
-//        favoriteImageButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                SQLiteDatabase db = bookmarksDbHelper.getReadableDatabase();
-//                Cursor rs = db.rawQuery("SELECT * FROM bookmarks",null);
-//                int flag=0;
-//                boolean isInserted = false;
-//                if(rs.moveToFirst()){
-//
-//                    while(!rs.isAfterLast()){
-//
-//                        String title_in_db = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_TITLE));
-//
-//                        if(title_in_db.equals(al_news.get(getAdapterPosition()).getTitle())){
-//
-//                            flag=1;
-//                        }
-//                        rs.moveToNext();
-//                    }
-//                }
-//                if(flag==0){
-//
-//                    SharedPreferences prefs = context.getSharedPreferences("bookmarksPrefs", MODE_PRIVATE);
-//                    int bookmarks_index = prefs.getInt("bookmarks_item_index", 0);
-//
-//                    isInserted =  bookmarksDbHelper.insertNewsBookmark(al_news.get(getAdapterPosition()).getTitle()
-//                            , al_news.get(getAdapterPosition()).getDescription()
-//                            , al_news.get(getAdapterPosition()).getUrl()
-//                            , al_news.get(getAdapterPosition()).getUrlToImage()
-//                            , al_news.get(getAdapterPosition()).getPublishedAt()
-//                            , bookmarks_index );
-//
-//                    SharedPreferences.Editor editor = prefs.edit();
-//                    editor.putInt("bookmarks_item_index", bookmarks_index+1);
-//                    editor.commit();
-//
-//                }
-//
-//                if(isInserted){
-//
-//                    boolean isBookmarked = techDbHelper.updateNewsTech(getAdapterPosition(),
-//                            al_news.get(getAdapterPosition()).getTitle(),
-//                            al_news.get(getAdapterPosition()).getDescription(),
-//                            al_news.get(getAdapterPosition()).getUrl(),
-//                            al_news.get(getAdapterPosition()).getUrlToImage(),
-//                            al_news.get(getAdapterPosition()).getPublishedAt(), 1);
-//
-//                    if(isBookmarked){
-//
-//                        favoriteImageButton.setClickable(false);
-//                        favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
-//                        Snackbar.make(v, "Added to Bookmarks. ", Snackbar.LENGTH_SHORT).show();
-//                    }
-//
-//                }else {
-//
-//                    if(flag==1){
-//
-//                        favoriteImageButton.setClickable(false);
-//                        favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
-//                        Snackbar.make(v, "Already added! ", Snackbar.LENGTH_SHORT).show();
-//                    }else {
-//
-//                        Snackbar.make(v, "Adding bookmark failed!! ", Snackbar.LENGTH_SHORT).show();
-//                    }
-//                }
-//
-//                rs.close();
-//                db.close();
-//            }
-//        });
 
         ImageButton shareImageButton = (ImageButton) itemView.findViewById(R.id.share_button);
         shareImageButton.setOnClickListener(new View.OnClickListener() {

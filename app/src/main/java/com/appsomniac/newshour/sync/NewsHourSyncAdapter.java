@@ -56,7 +56,8 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
     public static final int SYNC_INTERVAL = 600 * 1000;
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;
     private static final long DAY_IN_MILLIS = 1000 * 60 * 24;
-    private static final int WEATHER_NOTIFICATION_ID = 3004;
+    private static final int NEWS_HEAD_NOTIFICATION_ID = 3004;
+    private static final int NEWS_TECH_NOTIFICATION_ID = 3005;
 
     public static String GET_NEWS_URL_TOI = "", GET_NEWS_URL_CNN = "", GET_NEWS_URL_HINDU = "",
             GET_NEWS_URL_GUARDIAN = "", GET_NEWS_URL_TechCrunch = "", GET_NEWS_URL_HackerNews = "", GET_NEWS_URL_TechRadar = "";
@@ -316,17 +317,23 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
                         NotificationManager mNotificationManager =
                                 (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
-                        // WEATHER_NOTIFICATION_ID allows you to update the notification later on.
-                        mNotificationManager.notify(WEATHER_NOTIFICATION_ID, mBuilder.build());
+                        // NEWS_NOTIFICATION_ID allows you to update the notification later on.
+
+                    if(notify_flag == 0) {
+
+                        mNotificationManager.notify(NEWS_HEAD_NOTIFICATION_ID, mBuilder.build());
+                    }else
+                        if(notify_flag==1) {
+                            mNotificationManager.notify(NEWS_TECH_NOTIFICATION_ID, mBuilder.build());
+
+                        }
 
                         //refreshing last sync
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putLong(lastNotificationKey, System.currentTimeMillis());
                         editor.commit();
 
-                       // mNotificationManager.cancelAll();
-
-                        rs.moveToNext();
+                        //rs.moveToNext();
 
                 }
                 rs.close();
