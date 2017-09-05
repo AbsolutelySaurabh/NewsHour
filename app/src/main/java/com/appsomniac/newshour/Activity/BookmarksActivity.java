@@ -32,6 +32,7 @@ import com.appsomniac.newshour.Model.News;
 import com.appsomniac.newshour.data.NewsDbHelper;
 import com.appsomniac.newshour.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -189,7 +190,7 @@ public class BookmarksActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    Snackbar.make(v, "Swipe Right to Delete!", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(v, "Tip: Swipe Right to Delete!", Snackbar.LENGTH_SHORT).show();
                 }
             });
 
@@ -232,7 +233,11 @@ public class BookmarksActivity extends AppCompatActivity {
 
             try {
 
-                Glide.with(context).load(al_news.get(position).getUrlToImage()).thumbnail(0.5f).into(holder.picture);
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.placeholder(R.drawable.recode_2);
+                requestOptions.error(R.drawable.recode_2);
+
+                Glide.with(context).load(al_news.get(position).getUrlToImage()).apply(requestOptions).thumbnail(0.5f).into(holder.picture);
 
                 holder.title.setText(al_news.get(position).getTitle());
                 holder.description.setText(al_news.get(position).getDescription());

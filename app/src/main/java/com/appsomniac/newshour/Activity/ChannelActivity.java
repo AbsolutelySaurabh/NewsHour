@@ -70,7 +70,6 @@ public class ChannelActivity extends AppCompatActivity {
 
             NEWS_URL = Config.THEGUARDIAN_URL + Config.API_KEY;
             collapsingToolbar.setTitle("The Guardian");
-//            Picasso.with(this).load(R.drawable.guardian_2).error(R.drawable.icon_5).into(newsImage);
 
             Glide.with(this).load(R.drawable.guardian_2).thumbnail(0.5f).into(newsImage);
 
@@ -80,7 +79,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.TOI_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("The Times of India");
-//                Picasso.with(this).load(R.drawable.toi_collasping).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.toi_collasping).thumbnail(0.5f).into(newsImage);
 
             }else
@@ -88,7 +86,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.ESPN_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("ESPN");
-//                Picasso.with(this).load(R.drawable.espn).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.espn).thumbnail(0.5f).into(newsImage);
 
 
@@ -97,7 +94,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.TECHCRUNCH_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("TechCrunch");
-//                Picasso.with(this).load(R.drawable.tcrunch).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.tcrunch).thumbnail(0.5f).into(newsImage);
 
 
@@ -106,7 +102,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.MTVNEWS_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("MTV News");
-//                Picasso.with(this).load(R.drawable.mtv_news).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.mtv_news).thumbnail(0.5f).into(newsImage);
 
 
@@ -116,7 +111,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.RECODE_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("Recode");
-//                Picasso.with(this).load(R.drawable.recode_2).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.recode_2).thumbnail(0.5f).into(newsImage);
 
             }else
@@ -124,7 +118,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.HINDU_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("The Hindu");
-//                Picasso.with(this).load(R.drawable.hindu).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.hindu).thumbnail(0.5f).into(newsImage);
 
 
@@ -133,7 +126,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.TECHRADAR_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("TechRadar");
-//                Picasso.with(this).load(R.drawable.texh_radar_collasp).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.texh_radar_collasp).thumbnail(0.5f).into(newsImage);
 
 
@@ -142,7 +134,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.CNN_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("CNN");
-//                Picasso.with(this).load(R.drawable.cnn).error(R.drawable.icon_5).into(newsImage);
 
                 Glide.with(this).load(R.drawable.cnn).thumbnail(0.5f).into(newsImage);
 
@@ -152,7 +143,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.FOXSPORTS_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("Fox Sports");
-//                Picasso.with(this).load(R.drawable.foxsports).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.foxsports).thumbnail(0.5f).into(newsImage);
 
 
@@ -161,7 +151,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.BUZZ_FEEd_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("Buzz-Feed");
-//                Picasso.with(this).load(R.drawable.buzz_feed_cpllasp).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.buzz_feed_cpllasp).thumbnail(0.5f).into(newsImage);
 
 
@@ -170,7 +159,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.TIME_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("Time");
-//                Picasso.with(this).load(R.drawable.time).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.time).thumbnail(0.5f).into(newsImage);
 
 
@@ -179,7 +167,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.MASHABLE_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("Mashable");
-//                Picasso.with(this).load(R.drawable.mashable_collasp).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.mashable_collasp).thumbnail(0.5f).into(newsImage);
 
 
@@ -189,7 +176,6 @@ public class ChannelActivity extends AppCompatActivity {
                 NEWS_URL = Config.NAT_GEO_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("National Geographic");
 
-//                Picasso.with(this).load(R.drawable.nat_geo_collasp).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.nat_geo_collasp).thumbnail(0.5f).into(newsImage);
 
 
@@ -198,7 +184,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.HACKERNEWS_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("HackerNews");
-//                Picasso.with(this).load(R.drawable.hacker_news_collasping).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.hacker_news_collasping).thumbnail(0.5f).into(newsImage);
 
 
@@ -207,7 +192,6 @@ public class ChannelActivity extends AppCompatActivity {
 
                 NEWS_URL = Config.BUSINESS_INSIDER_URL + Config.API_KEY;
                 collapsingToolbar.setTitle("Business Insider");
-//                Picasso.with(this).load(R.drawable.business_inside_2).error(R.drawable.icon_5).into(newsImage);
                 Glide.with(this).load(R.drawable.business_inside_2).thumbnail(0.5f).into(newsImage);
             }
 
@@ -237,8 +221,11 @@ public class ChannelActivity extends AppCompatActivity {
                         String urlToImage = currentNewsObject.getString("urlToImage");
                         String publishedAt = currentNewsObject.getString("publishedAt");
 
-                        News currentNews = new News(title, description, publishedAt, url, urlToImage);
-                        al_news.add(currentNews);
+                        if(description.length()>=5) {
+
+                            News currentNews = new News(title, description, publishedAt, url, urlToImage);
+                            al_news.add(currentNews);
+                        }
 
                         Log.d("QUESTIONS: "+ String.valueOf(i), title);
                     }

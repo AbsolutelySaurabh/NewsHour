@@ -13,10 +13,11 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/list_avatar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:src="@drawable/icon_5"
         android:layout_centerVertical="true"
-        android:src="@mipmap/headline_icon_test"
+        android:src="@drawable/icon_5"
         />
 
     <TextView

@@ -123,7 +123,7 @@ public class ChannelActivityViewHolder extends RecyclerView.ViewHolder {
 
                 if(isInserted){
 
-                        favoriteImageButton.setClickable(false);
+                        //favoriteImageButton.setClickable(false);
                         favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
                         Snackbar.make(v, "Added to Bookmarks. ", Snackbar.LENGTH_SHORT).show();
 
@@ -131,7 +131,7 @@ public class ChannelActivityViewHolder extends RecyclerView.ViewHolder {
 
                     if(flag==1){
 
-                        favoriteImageButton.setClickable(false);
+                        //favoriteImageButton.setClickable(false);
                         favoriteImageButton.setColorFilter(Color.rgb(30,144,255));
                         Snackbar.make(v, "Already added! ", Snackbar.LENGTH_SHORT).show();
                     }else {

@@ -6,6 +6,7 @@ package com.appsomniac.newshour.sync;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.AbstractThreadedSyncAdapter;
@@ -28,11 +29,15 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 import com.appsomniac.newshour.Activity.MainActivity;
 import com.appsomniac.newshour.data.NewsDbHelper;
 import com.appsomniac.newshour.Config.Config;
 import com.appsomniac.newshour.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.NotificationTarget;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -55,9 +60,10 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
     // 60 seconds (1 minute) * 180 = 3 hours
     public static final int SYNC_INTERVAL = 600 * 1000;
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;
-    private static final long DAY_IN_MILLIS = 1000 * 60 * 24;
+    private static final long DAY_IN_MILLIS = 1000 * 60 * 15;
     private static final int NEWS_HEAD_NOTIFICATION_ID = 3004;
     private static final int NEWS_TECH_NOTIFICATION_ID = 3005;
+
 
     public static String GET_NEWS_URL_TOI = "", GET_NEWS_URL_CNN = "", GET_NEWS_URL_HINDU = "",
             GET_NEWS_URL_GUARDIAN = "", GET_NEWS_URL_TechCrunch = "", GET_NEWS_URL_HackerNews = "", GET_NEWS_URL_TechRadar = "";
@@ -225,13 +231,13 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
                         if(another_flag == 0) {
                             newsDbHelper.insertNewsHead(title, description, url, urlToImage, publishedAt, 0);
-                            notifyNews(0);
+                            notifyNewsHead();
                         }else
                             if(another_flag == 1){
 
                                 newsDbHelper.insertNewsTech(title, description, url, urlToImage, publishedAt, 0, techNews_table_item_index);
                                 techNews_table_item_index++;
-                                notifyNews(1);
+                                notifyNewsTech();
                             }
                     }
                 }
@@ -244,39 +250,74 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
         }
     }
 
-    private void notifyNews(int notify_flag) {
 
-        Context context = getContext();
-        //checking the last update and notify if it' the first of the day
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String displayNotificationsKey = context.getString(R.string.pref_enable_notifications_key);
-        boolean displayNotifications = prefs.getBoolean(displayNotificationsKey,
-                Boolean.parseBoolean(context.getString(R.string.pref_enable_notifications_default)));
+    public void notifyNewsHead(){
 
-        if ( displayNotifications ) {
 
-            String lastNotificationKey = context.getString(R.string.pref_last_notification);
-            long lastSync = prefs.getLong(lastNotificationKey, 0);
+        context = getContext();
 
-            if (System.currentTimeMillis() - lastSync >= DAY_IN_MILLIS) {
-
-                // Last sync was more than 1 day ago, let's send a notification with the weather.
                 SQLiteDatabase db = newsDbHelper.getReadableDatabase();
+                Cursor rs = db.rawQuery("SELECT * FROM headlineNews", null);
 
-                Cursor rs = null;
-                if(notify_flag == 0) {
-                     rs = db.rawQuery("SELECT * FROM headlineNews", null);
-                }else
-                    if(notify_flag == 1) {
+        if (rs.moveToFirst()) {
 
-                         rs = db.rawQuery("SELECT * FROM techNews", null);
-                    }
+                String title = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_TITLE));
+                String description = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_DESC));
+                // String urlToImage = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_URLTOIMAGE));
 
-                if (rs.moveToLast()) {
+                Log.e("Notification title: ", title);
+
+                Resources resources = getContext().getResources();
+                Bitmap largeIcon = BitmapFactory.decodeResource(resources,
+                        R.drawable.icon_5);
+
+                NotificationCompat.Builder mBuilder =
+                        new NotificationCompat.Builder(getContext())
+                                .setColor(resources.getColor(R.color.colorPrimary))
+                                .setSmallIcon(R.drawable.icon_5)
+                                .setLargeIcon(largeIcon)
+                                .setContentTitle(title)
+                                .setContentText(description);
+
+                Intent resultIntent = new Intent(context, MainActivity.class);
+                // The stack builder object will contain an artificial back stack for the
+                // started Activity.
+                // This ensures that navigating backward from the Activity leads out of
+                // your application to the Home screen.
+                TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+                stackBuilder.addNextIntent(resultIntent);
+                PendingIntent resultPendingIntent =
+                        stackBuilder.getPendingIntent(
+                                0,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        );
+
+                mBuilder.setContentIntent(resultPendingIntent);
+
+                NotificationManager mNotificationManager =
+                        (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+                mNotificationManager.notify(NEWS_HEAD_NOTIFICATION_ID, mBuilder.build());
+
+                //rs.moveToNext();
+                rs.close();
+
+        }
+
+    }
+
+    public void notifyNewsTech(){
+
+        context = getContext();
+
+        SQLiteDatabase db = newsDbHelper.getReadableDatabase();
+                Cursor rs = db.rawQuery("SELECT * FROM techNews", null);
+
+                if (rs.moveToFirst()) {
 
                         String title = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_TITLE));
                         String description = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_DESC));
-                       // String urlToImage = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_URLTOIMAGE));
+                        // String urlToImage = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_URLTOIMAGE));
 
                         Log.e("Notification title: ", title);
 
@@ -286,8 +327,6 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
                         String no_title = context.getString(R.string.app_name);
 
-                        // NotificationCompatBuilder is a very convenient way to build backward-compatible
-                        // notifications.  Just throw in some data.
                         NotificationCompat.Builder mBuilder =
                                 new NotificationCompat.Builder(getContext())
                                         .setColor(resources.getColor(R.color.colorPrimary))
@@ -300,7 +339,6 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
                         // Make something interesting happen when the user clicks on the notification.
                         // In this case, opening the app is sufficient.
                         Intent resultIntent = new Intent(context, MainActivity.class);
-
                         // The stack builder object will contain an artificial back stack for the
                         // started Activity.
                         // This ensures that navigating backward from the Activity leads out of
@@ -316,29 +354,16 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
                         mBuilder.setContentIntent(resultPendingIntent);
 
                         NotificationManager mNotificationManager =
-                                (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
                         // NEWS_NOTIFICATION_ID allows you to update the notification later on.
 
-                    if(notify_flag == 0) {
-
-                        mNotificationManager.notify(NEWS_HEAD_NOTIFICATION_ID, mBuilder.build());
-                    }else
-                        if(notify_flag==1) {
-                            mNotificationManager.notify(NEWS_TECH_NOTIFICATION_ID, mBuilder.build());
-
-                        }
-
-                        //refreshing last sync
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putLong(lastNotificationKey, System.currentTimeMillis());
-                        editor.commit();
+                        mNotificationManager.notify(NEWS_TECH_NOTIFICATION_ID, mBuilder.build());
 
                         //rs.moveToNext();
+                        rs.close();
 
-                }
-                rs.close();
-            }
-        }
+                    }
+
     }
 
     /**

@@ -21,6 +21,8 @@ import com.appsomniac.newshour.Model.News;
 import com.appsomniac.newshour.R;
 import com.appsomniac.newshour.ViewHolder.HeadLineFragViewHolder;
 import com.appsomniac.newshour.ViewHolder.TechFragViewHolder;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Random;
@@ -57,7 +59,11 @@ public class HeadLineFragContentAdapter extends RecyclerView.Adapter<HeadLineFra
     @Override
     public void onBindViewHolder(HeadLineFragViewHolder holder, int position) {
 
-        holder.avator.setImageDrawable(mPlaceAvators[position % mPlaceAvators.length]);
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.mipmap.ic_launcher_round);
+        requestOptions.error(R.mipmap.ic_launcher_round);
+
+        Glide.with(context).load(al_news.get(position).getUrlToImage()).apply(requestOptions).thumbnail(0.5f).into(holder.avator);
 
         try {
             holder.title.setText(al_news.get(position).getTitle());
