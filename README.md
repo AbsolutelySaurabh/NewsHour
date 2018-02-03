@@ -27,12 +27,11 @@ He/She also has the option to see the news of a particular channel which he choo
 ```
   
 ## Screenshots  
-  <img  src="screenshots/a.png" width="230" height="450" >   <img src="screenshots/b.png" width="230" height="450">
-  <img src="screenshots/c.png" width="230" height="450"> <img src="screenshots/d.png" width="230" height="450">
-   <img src="screenshots/e.png" width="230" height="450"> <img src="screenshots/f.png" width="230" height="450">
-    <img src="screenshots/g.png" width="230" height="450">    <img src="screenshots/h.png" width="230" height="450">
-        <img src="screenshots/i.png" width="230" height="450">     <img src="screenshots/j.png" width="230" height="450">
-    <img src="screenshots/k.png" width="230" height="450">
+  <img  src="screenshots/a.png" width="230" height="400" >   <img src="screenshots/b.png" width="230" height="400">
+  <img src="screenshots/c.png" width="230" height="400"> <img src="screenshots/d.png" width="230" height="400">
+   <img src="screenshots/e.png" width="230" height="400">   <img src="screenshots/h.png" width="230" height="400">
+        <img src="screenshots/i.png" width="230" height="400">     <img src="screenshots/j.png" width="230" height="400">
+    <img src="screenshots/k.png" width="230" height="400">
 
 
 
