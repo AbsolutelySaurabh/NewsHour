@@ -5,7 +5,7 @@
 </h1>
 <h3 align="center">Your one-stop destination to all news.</h3>
 <h4 align="center"> <i>Dedicated to news readers!</i></h4>
-<h6 align="center"><a href="https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4rrjow4zWKnjMcFxV3pD8"><img src="https://github.com/AbsolutelySaurabh/NewHour/blob/master/icons/playstore-icon.png" width="200"></a></h6>
+<h6 align="center"><a href="https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4rrjow4zWKnjMcFxV3pD8"><img src="https://github.com/AbsolutelySaurabh/NewHour/blob/master/playstore-icon.png" width="200"></a></h6>
 <p align="center">
   <a href="https://github.com/AbsolutelySaurabh/NewHour#fork-destination-box">
     . Contribute .
