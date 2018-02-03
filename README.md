@@ -1,13 +1,13 @@
-![screenshot](https://github.com/AbsolutelySaurabh/NewsHour/blob/master/screenshots/collage.png)
+![screenshot](https://github.com/AbsolutelySaurabh/NewHour/blob/master/screenshots/collage.png)
 <h1 align="center">
     NewsHour
   <br>
 </h1>
 <h3 align="center">Your one-stop destination to all news.</h3>
 <h4 align="center"> <i>Dedicated to news readers!</i></h4>
-<h6 align="center"><a href="https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4rrjow4zWKnjMcFxV3pD8"><img src="https://github.com/AbsolutelySaurabh/NewsHour/blob/master/icons/playstore-icon.png" width="200"></a></h6>
+<h6 align="center"><a href="https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4rrjow4zWKnjMcFxV3pD8"><img src="https://github.com/AbsolutelySaurabh/NewHour/blob/master/icons/playstore-icon.png" width="200"></a></h6>
 <p align="center">
-  <a href="https://github.com/AbsolutelySaurabh/NewsHour#fork-destination-box">
+  <a href="https://github.com/AbsolutelySaurabh/NewHour#fork-destination-box">
     . Contribute .
   </a>
   <a href="https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4rrjow4zWKnjMcFxV3pD8">
@@ -52,9 +52,9 @@ To fix a bug or enhance an existing module, follow these steps:
   
   
 ## Interested?  
-If you find a bug (the website couldn't handle the query and / or gave irrelevant results), kindly open an issue [here](https://github.com/AbsolutelySaurabh/NewsHour/issues/new) by including your search query and the expected result.  
+If you find a bug (the website couldn't handle the query and / or gave irrelevant results), kindly open an issue [here](https://github.com/AbsolutelySaurabh/NewHour/issues/new) by including your search query and the expected result.  
   
-If you'd like to request a new functionality, feel free to do so by opening an issue [here](https://github.com/AbsolutelySaurabh/NewsHour/issues/new) including some sample queries and their corresponding results.
+If you'd like to request a new functionality, feel free to do so by opening an issue [here](https://github.com/AbsolutelySaurabh/NewHour/issues/new) including some sample queries and their corresponding results.
   
   
 ## License
