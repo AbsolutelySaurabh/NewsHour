@@ -58,7 +58,7 @@ If you'd like to request a new functionality, feel free to do so by opening an i
 
 ```bash
 
-Copyright 2017 ShowCube.
+Copyright 2017 NewsHour.
 
 Licensed to the Apache Software Foundation (ASF) under one or more contributor
 license agreements. See the NOTICE file distributed with this work for
