@@ -29,8 +29,8 @@ He/She also has the option to see the news of a particular channel which he choo
 ## Screenshots  
   <img  src="screenshots/a.png" width="210" height="350" >   <img src="screenshots/b.png" width="210" height="350">
   <img src="screenshots/c.png" width="210" height="350"> <img src="screenshots/d.png" width="210" height="350">
-   <img src="screenshots/e.png" width="210" height="350">   <img src="screenshots/f.png" width="210" height="350">
-        <img src="screenshots/g.png" width="210" height="350">     <img src="screenshots/j.png" width="210" height="350">
+   <img src="screenshots/e.png" width="210" height="350">   <img src="screenshots/h.png" width="210" height="350">
+        <img src="screenshots/i.png" width="210" height="350">     <img src="screenshots/j.png" width="210" height="350">
 
 
   

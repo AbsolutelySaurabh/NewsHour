@@ -1,4 +1,4 @@
 <sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accountType="com.appsomniac.newshour.app"
-    android:contentAuthority="com.appsomniac.newshour"
+    android:accountType="dexter.appsomniac.newshour.app"
+    android:contentAuthority="dexter.appsomniac.newshour"
     android:supportsUploading="false" />
