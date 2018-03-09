@@ -114,12 +114,11 @@ public class BookmarksActivity extends AppCompatActivity {
                                     bookmarksDbHelper.deleteBookmark(position);
 
                                     al_news.remove(position);
+                                    dialog.dismiss();
 
                                     Intent intent = new Intent(getApplicationContext(), BookmarksActivity.class);
                                     finish();
                                     startActivity(intent);
-
-                                    dialog.dismiss();
                                     return;
 
                                 }

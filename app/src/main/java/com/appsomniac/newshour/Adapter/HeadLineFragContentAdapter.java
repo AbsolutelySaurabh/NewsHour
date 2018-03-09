@@ -13,12 +13,15 @@ import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 
 import com.appsomniac.newshour.ClassFragments.HeadlineFragment;
 import com.appsomniac.newshour.ClassFragments.TechFragment;
 import com.appsomniac.newshour.Model.News;
 import com.appsomniac.newshour.R;
+import com.appsomniac.newshour.Util.Utils;
 import com.appsomniac.newshour.ViewHolder.HeadLineFragViewHolder;
 import com.appsomniac.newshour.ViewHolder.TechFragViewHolder;
 import com.bumptech.glide.Glide;
@@ -60,14 +63,15 @@ public class HeadLineFragContentAdapter extends RecyclerView.Adapter<HeadLineFra
     public void onBindViewHolder(HeadLineFragViewHolder holder, int position) {
 
         RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.mipmap.ic_launcher_round);
-        requestOptions.error(R.mipmap.ic_launcher_round);
+        requestOptions.placeholder(R.mipmap.ic_launcher);
+        requestOptions.error(R.mipmap.ic_launcher);
 
         Glide.with(context).load(al_news.get(position).getUrlToImage()).apply(requestOptions).thumbnail(0.5f).into(holder.avator);
 
         try {
             holder.title.setText(al_news.get(position).getTitle());
             holder.description.setText(al_news.get(position).getDescription());
+            runEnterAnimation(holder.itemView);
         } catch (IndexOutOfBoundsException e) {
 
             e.printStackTrace();
@@ -75,6 +79,15 @@ public class HeadLineFragContentAdapter extends RecyclerView.Adapter<HeadLineFra
 
         Log.e("position holder: ", String.valueOf(position));
 
+    }
+
+    private void runEnterAnimation(View view) {
+        view.setTranslationY(Utils.getScreenHeight(context));
+        view.animate()
+                .translationY(0)
+                .setInterpolator(new DecelerateInterpolator(3.f))
+                .setDuration(700)
+                .start();
     }
 
     @Override

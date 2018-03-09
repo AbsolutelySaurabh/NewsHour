@@ -98,11 +98,11 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
         buildUrl(GET_NEWS_URL_HINDU, 0);
         buildUrl(GET_NEWS_URL_TOI, 0);
+        buildUrl(GET_NEWS_URL_TechRadar, 1);
         buildUrl(GET_NEWS_URL_GUARDIAN, 0);
         buildUrl(GET_NEWS_URL_CNN, 0);
 
         buildUrl(GET_NEWS_URL_TechCrunch, 1);
-        buildUrl(GET_NEWS_URL_TechRadar, 1);
         buildUrl(GET_NEWS_URL_HackerNews, 1);
 
     }
@@ -269,12 +269,12 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
                 Resources resources = getContext().getResources();
                 Bitmap largeIcon = BitmapFactory.decodeResource(resources,
-                        R.drawable.icon_5);
+                        R.mipmap.ic_launcher);
 
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(getContext())
                                 .setColor(resources.getColor(R.color.colorPrimary))
-                                .setSmallIcon(R.drawable.icon_5)
+                                .setSmallIcon(R.mipmap.ic_launcher)
                                 .setLargeIcon(largeIcon)
                                 .setContentTitle(title)
                                 .setContentText(description);
@@ -319,18 +319,17 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
                         String description = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_DESC));
                         // String urlToImage = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_URLTOIMAGE));
 
-                        Log.e("Notification title: ", title);
-
                         Resources resources = context.getResources();
                         Bitmap largeIcon = BitmapFactory.decodeResource(resources,
-                                R.drawable.icon_5);
+                                R.mipmap.ic_launcher);
 
                         String no_title = context.getString(R.string.app_name);
 
                         NotificationCompat.Builder mBuilder =
                                 new NotificationCompat.Builder(getContext())
                                         .setColor(resources.getColor(R.color.colorPrimary))
-                                        .setSmallIcon(R.drawable.icon_5)
+                                        .setSmallIcon(R.mipmap.ic_launcher)
+
                                         .setLargeIcon(largeIcon)
                                         .setContentTitle(title)
                                         .setContentText(description);

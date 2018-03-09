@@ -20,6 +20,9 @@ public class SplashScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        Log.d("SyncAdapter is called: ","...");
+        NewsHourSyncAdapter.initializeSyncAdapter(getApplicationContext());
+
         new Handler().postDelayed(new Runnable() {
 
             /*
@@ -31,10 +34,6 @@ public class SplashScreenActivity extends Activity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-
-                Log.e("SyncAdapter is called: ","...");
-
-                NewsHourSyncAdapter.initializeSyncAdapter(getApplicationContext());
 
                 Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
                 startActivity(i);

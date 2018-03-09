@@ -8,6 +8,7 @@
         <item
             android:id="@+id/nav_headlines"
             android:icon="@drawable/ic_trending_80_up_black_24dp"
+            android:checked="true"
             android:title="Headlines" />
         <item
             android:id="@+id/nav_channels"

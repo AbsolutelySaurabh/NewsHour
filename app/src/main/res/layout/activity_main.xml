@@ -47,6 +47,7 @@
             android:layout_gravity="right|bottom"
             android:layout_marginBottom="@dimen/md_keylines"
             android:layout_marginRight="@dimen/md_keylines"
+            android:tint="@color/white"
             android:src="@drawable/bookmark_image_24dp"
             app:fabSize="normal"
             />
