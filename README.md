@@ -10,7 +10,7 @@
   <a href="https://github.com/AbsolutelySaurabh/NewHour#fork-destination-box">
     . Contribute .
   </a>
-  <a href="https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4rrjow4zWKnjMcFxV3pD8">
+  <a href="https://play.google.com/store/apps/details?id=dexter.appsomniac.newshour&hl=en">
     . Download .
   </a>
 </p>
