@@ -6,7 +6,6 @@ package dexter.appsomniac.newshour.sync;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.AbstractThreadedSyncAdapter;
@@ -14,7 +13,6 @@ import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.SyncRequest;
 import android.content.SyncResult;
 import android.content.res.Resources;
@@ -25,21 +23,17 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
-import android.widget.RemoteViews;
-
-import dexter.appsomniac.newshour.Activity.MainActivity;
-import dexter.appsomniac.newshour.data.NewsDbHelper;
-import dexter.appsomniac.newshour.Config.Config;
-import dexter.appsomniac.newshour.R;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.NotificationTarget;
+import cz.msebera.android.httpclient.Header;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+
+import dexter.appsomniac.newshour.activity.MainActivity;
+import dexter.appsomniac.newshour.data.NewsDbHelper;
+import dexter.appsomniac.newshour.config.Config;
+import dexter.appsomniac.newshour.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,9 +46,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import cz.msebera.android.httpclient.Header;
-
 public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
+
     public final String LOG_TAG = NewsHourSyncAdapter.class.getSimpleName();
     // Interval at which to sync with the news, in seconds.
     // 60 seconds (1 minute) * 180 = 3 hours
@@ -63,7 +56,6 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
     private static final long DAY_IN_MILLIS = 1000 * 60 * 15;
     private static final int NEWS_HEAD_NOTIFICATION_ID = 3004;
     private static final int NEWS_TECH_NOTIFICATION_ID = 3005;
-
 
     public static String GET_NEWS_URL_TOI = "", GET_NEWS_URL_CNN = "", GET_NEWS_URL_HINDU = "",
             GET_NEWS_URL_GUARDIAN = "", GET_NEWS_URL_TechCrunch = "", GET_NEWS_URL_HackerNews = "", GET_NEWS_URL_TechRadar = "";
@@ -77,11 +69,28 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     @Override
-    public void onPerformSync(Account account, Bundle extras, String authority,
-                              ContentProviderClient provider, SyncResult syncResult) {
+    public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
 
-        Log.d(LOG_TAG, "Starting sync");
+        makeUrls();
+        erasePreviousData();
 
+        buildUrl(GET_NEWS_URL_HINDU, 0);
+        buildUrl(GET_NEWS_URL_TOI, 0);
+        buildUrl(GET_NEWS_URL_TechRadar, 1);
+        buildUrl(GET_NEWS_URL_GUARDIAN, 0);
+        buildUrl(GET_NEWS_URL_CNN, 0);
+        buildUrl(GET_NEWS_URL_TechCrunch, 1);
+        buildUrl(GET_NEWS_URL_HackerNews, 1);
+
+    }
+
+    private void erasePreviousData(){
+        newsDbHelper = new NewsDbHelper(getContext());
+        newsDbHelper.deleteAllRecordHead();
+        newsDbHelper.deleteAllRecordTech();
+    }
+
+    private void makeUrls(){
         GET_NEWS_URL_TOI = Config.TOI_URL + Config.API_KEY;
         GET_NEWS_URL_CNN = Config.CNN_URL + Config.API_KEY ;
         GET_NEWS_URL_HINDU = Config.HINDU_URL + Config.API_KEY;
@@ -89,22 +98,6 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
         GET_NEWS_URL_TechCrunch = Config.TECHCRUNCH_URL + Config.API_KEY;
         GET_NEWS_URL_TechRadar = Config.TECHRADAR_URL + Config.API_KEY ;
         GET_NEWS_URL_HackerNews= Config.HACKERNEWS_URL + Config.API_KEY;
-
-        newsDbHelper = new NewsDbHelper(getContext());
-        newsDbHelper.deleteAllRecordHead();
-        newsDbHelper.deleteAllRecordTech();
-
-        Log.e("URL TOI SYNCADAPTER: ", GET_NEWS_URL_HINDU);
-
-        buildUrl(GET_NEWS_URL_HINDU, 0);
-        buildUrl(GET_NEWS_URL_TOI, 0);
-        buildUrl(GET_NEWS_URL_TechRadar, 1);
-        buildUrl(GET_NEWS_URL_GUARDIAN, 0);
-        buildUrl(GET_NEWS_URL_CNN, 0);
-
-        buildUrl(GET_NEWS_URL_TechCrunch, 1);
-        buildUrl(GET_NEWS_URL_HackerNews, 1);
-
     }
 
     private void buildUrl(String NEWS_REQUEST_URL, int flag){
@@ -114,7 +107,6 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
         // Will contain the raw JSON response as a string.
         String forecastJsonStr = null;
-
 
         try {
 
@@ -210,7 +202,6 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
                 String urlToImage = currentNewsObject.getString("urlToImage");
                 String publishedAt = currentNewsObject.getString("publishedAt");
 
-
                 if(description.length()>5) {
 
                     int flag = 0;
@@ -231,18 +222,18 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
                         if(another_flag == 0) {
                             newsDbHelper.insertNewsHead(title, description, url, urlToImage, publishedAt, 0);
-                            notifyNewsHead();
                         }else
                             if(another_flag == 1){
 
                                 newsDbHelper.insertNewsTech(title, description, url, urlToImage, publishedAt, 0, techNews_table_item_index);
                                 techNews_table_item_index++;
-                                notifyNewsTech();
                             }
                     }
                 }
                 Log.d("QUESTIONS: "+ String.valueOf(i), title);
             }
+            notifyNewsTech();
+            notifyNewsHead();
 
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
@@ -252,7 +243,6 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
 
     public void notifyNewsHead(){
-
 
         context = getContext();
 
@@ -273,7 +263,7 @@ public class NewsHourSyncAdapter extends AbstractThreadedSyncAdapter {
 
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(getContext())
-                                .setColor(resources.getColor(R.color.colorPrimary))
+                                .setColor(resources.getColor(R.color.white))
                                 .setSmallIcon(R.mipmap.ic_launcher)
                                 .setLargeIcon(largeIcon)
                                 .setContentTitle(title)

@@ -50,7 +50,7 @@ public class NewsDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         String SQL_CREATE_NEWS_TABLE_HEAD =  "CREATE TABLE " + TABLE_NAME_HEAD + " ("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_ID + " INTEGER PRIMARY KEY, "
                 + COLUMN_NEWS_TITLE + " TEXT NOT NULL, "
                 + COLUMN_NEWS_DESC + " TEXT, "
                 + COLUMN_NEWS_URL + " TEXT NOT NULL, "
@@ -59,7 +59,7 @@ public class NewsDbHelper extends SQLiteOpenHelper {
                 + COLUMN_IS_BOOKMARKED + " INTEGER DEFAULT 0);";
 
         String SQL_CREATE_NEWS_TABLE_BOOKMARK =  "CREATE TABLE " + TABLE_NAME_BOOKMARK + " ("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_ID + " INTEGER PRIMARY KEY, "
                 + ITEM_INDEX + " INTEGER, "
                 + COLUMN_NEWS_TITLE + " TEXT NOT NULL, "
                 + COLUMN_NEWS_DESC + " TEXT, "
@@ -68,7 +68,7 @@ public class NewsDbHelper extends SQLiteOpenHelper {
                 + COLUMN_NEWS_PUBLISHEDAT + " TEXT);";
 
         String SQL_CREATE_NEWS_TABLE_TECH =  "CREATE TABLE " + TABLE_NAME_TECH + " ("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_ID + " INTEGER PRIMARY KEY, "
                 + COLUMN_NEWS_TITLE + " TEXT NOT NULL, "
                 + COLUMN_NEWS_DESC + " TEXT, "
                 + COLUMN_NEWS_URL + " TEXT NOT NULL, "
@@ -91,8 +91,7 @@ public class NewsDbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertNewsHead(String title, String desc, String url, String url_to_image,
-                                  String publishedAt, int isBookmarked) {
+    public boolean insertNewsHead(String title, String desc, String url, String url_to_image, String publishedAt, int isBookmarked) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -146,12 +145,15 @@ public class NewsDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME_BOOKMARK );
 
+        updateBookmarksItemsIndexToZero();
+    }
+
+    private void updateBookmarksItemsIndexToZero(){
+
         SharedPreferences prefs = mContext.getSharedPreferences("bookmarksPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("bookmarks_item_index", 0);
         editor.commit();
-
-
     }
 
     public int numberOfRowsInBookmarks() {
@@ -182,20 +184,24 @@ public class NewsDbHelper extends SQLiteOpenHelper {
         //delete the data from the bookmarks table where item_index = position;
         SQLiteDatabase db = this.getWritableDatabase();
 
-        db.execSQL("DELETE FROM " + TABLE_NAME_BOOKMARK + " WHERE " +
-                ITEM_INDEX + " = " + position + ";");
+        db.execSQL("DELETE FROM " + TABLE_NAME_BOOKMARK + " WHERE " + ITEM_INDEX + " = " + position + ";");
 
         db.execSQL("UPDATE " + TABLE_NAME_BOOKMARK + " SET " + ITEM_INDEX + " = " +
                 ITEM_INDEX + " -1 " + " WHERE " + ITEM_INDEX + " > " + position + ";");
+
+        updateBookmarksItemsIndex();
+
+        db.close();
+
+    }
+
+    private void updateBookmarksItemsIndex(){
 
         SharedPreferences prefs = mContext.getSharedPreferences("bookmarksPrefs", MODE_PRIVATE);
         int bookmarks_index = prefs.getInt("bookmarks_item_index", 0);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("bookmarks_item_index", bookmarks_index-1);
         editor.commit();
-
-        db.close();
-
     }
 
     public void deleteAllRecordHead(){

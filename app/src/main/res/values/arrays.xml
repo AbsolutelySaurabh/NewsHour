@@ -23,7 +23,6 @@
 
     </string-array>
 
-
     <array name="places_picture">
     <item>@drawable/guardian</item>
     <item>@drawable/toi</item>

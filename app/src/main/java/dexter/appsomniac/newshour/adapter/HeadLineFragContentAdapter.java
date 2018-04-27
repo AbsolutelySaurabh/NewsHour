@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Adapter;
+package dexter.appsomniac.newshour.adapter;
 
 /**
  * Created by absolutelysaurabh on 22/8/17.
@@ -7,9 +7,7 @@ package dexter.appsomniac.newshour.Adapter;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,18 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 
-import dexter.appsomniac.newshour.ClassFragments.HeadlineFragment;
-import dexter.appsomniac.newshour.ClassFragments.TechFragment;
-import dexter.appsomniac.newshour.Model.News;
+import dexter.appsomniac.newshour.model.News;
 import dexter.appsomniac.newshour.R;
-import dexter.appsomniac.newshour.Util.Utils;
-import dexter.appsomniac.newshour.ViewHolder.HeadLineFragViewHolder;
-import dexter.appsomniac.newshour.ViewHolder.TechFragViewHolder;
+import dexter.appsomniac.newshour.util.Utils;
+import dexter.appsomniac.newshour.viewholder.HeadLineFragViewHolder;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Adapter to display recycler view.
@@ -77,7 +72,7 @@ public class HeadLineFragContentAdapter extends RecyclerView.Adapter<HeadLineFra
             e.printStackTrace();
         }
 
-        Log.e("position holder: ", String.valueOf(position));
+        Log.d("position holder: ", String.valueOf(position));
 
     }
 

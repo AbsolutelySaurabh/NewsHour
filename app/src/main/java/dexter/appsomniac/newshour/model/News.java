@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Model;
+package dexter.appsomniac.newshour.model;
 
 /**
  * Created by absolutelysaurabh on 22/8/17.

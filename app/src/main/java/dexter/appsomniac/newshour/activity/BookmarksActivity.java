@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Activity;
+package dexter.appsomniac.newshour.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -28,12 +28,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import dexter.appsomniac.newshour.Model.News;
+import dexter.appsomniac.newshour.model.News;
 import dexter.appsomniac.newshour.data.NewsDbHelper;
 import dexter.appsomniac.newshour.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 

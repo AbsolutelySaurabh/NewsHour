@@ -1,18 +1,15 @@
-package dexter.appsomniac.newshour.Activity;
+package dexter.appsomniac.newshour.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
-import dexter.appsomniac.newshour.Config.Config;
+import dexter.appsomniac.newshour.config.Config;
 import dexter.appsomniac.newshour.R;
 
 public class WebViewActivity extends AppCompatActivity {
@@ -24,7 +21,7 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
-         myWebView.getSettings().setJavaScriptEnabled(false);
+        myWebView.getSettings().setJavaScriptEnabled(true);
 
         myWebView.setWebViewClient(new WebViewClient());
         myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);

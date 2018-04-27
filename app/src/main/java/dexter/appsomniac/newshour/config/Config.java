@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Config;
+package dexter.appsomniac.newshour.config;
 
 public class Config {
  public static String API_KEY = "0cd429a696954c2b837a14efc187a904";

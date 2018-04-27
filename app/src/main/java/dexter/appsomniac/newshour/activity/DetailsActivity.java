@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Activity;
+package dexter.appsomniac.newshour.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,17 +16,14 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import dexter.appsomniac.newshour.ClassFragments.HeadlineFragment;
-import dexter.appsomniac.newshour.ClassFragments.TechFragment;
-import dexter.appsomniac.newshour.Model.News;
+import dexter.appsomniac.newshour.classfragments.HeadlineFragment;
+import dexter.appsomniac.newshour.classfragments.TechFragment;
+import dexter.appsomniac.newshour.model.News;
 import dexter.appsomniac.newshour.R;
-import dexter.appsomniac.newshour.ViewHolder.HeadLineFragViewHolder;
 import dexter.appsomniac.newshour.data.NewsDbHelper;
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 

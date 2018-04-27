@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Activity;
+package dexter.appsomniac.newshour.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -38,7 +38,6 @@ public class SplashScreenActivity extends Activity {
                 Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
                 startActivity(i);
 
-                // close this activity
                 finish();
             }
         }, SPLASH_TIME_OUT);

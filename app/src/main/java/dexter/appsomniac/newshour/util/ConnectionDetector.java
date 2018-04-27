@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Util;
+package dexter.appsomniac.newshour.util;
 
 /**
  * Created by absolutelysaurabh on 15/8/17.

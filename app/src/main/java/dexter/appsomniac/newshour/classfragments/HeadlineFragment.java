@@ -1,6 +1,5 @@
-package dexter.appsomniac.newshour.ClassFragments;
+package dexter.appsomniac.newshour.classfragments;
 
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -12,71 +11,59 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import dexter.appsomniac.newshour.Adapter.TechFragContentAdapter;
+import dexter.appsomniac.newshour.adapter.HeadLineFragContentAdapter;
 import dexter.appsomniac.newshour.data.NewsDbHelper;
-import dexter.appsomniac.newshour.Config.Config;
-import dexter.appsomniac.newshour.Model.News;
+import dexter.appsomniac.newshour.config.Config;
+import dexter.appsomniac.newshour.model.News;
 import dexter.appsomniac.newshour.R;
-import dexter.appsomniac.newshour.Util.ConnectionDetector;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import cz.msebera.android.httpclient.Header;
-
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 /**
  * Created by absolutelysaurabh on 6/8/17.
  */
-public class TechFragment extends Fragment{
 
-    public static String GET_NEWS_URL_TechCrunch = "", GET_NEWS_URL_HackerNews = "", GET_NEWS_URL_TechRadar = "";
+public class HeadlineFragment extends Fragment {
 
-    private NewsDbHelper techDbHelper, bookmarksDbHelper;
+    private NewsDbHelper headlineNewsDbHelper, bookmarksDbHelper;
+
+    RecyclerView recyclerView;
+    HeadLineFragContentAdapter adapter;
+    public static int index = 0;
     public static ArrayList<News> al_news;
 
-    SharedPreferences.Editor editor;
-
-    TechFragContentAdapter adapter;
-    RecyclerView recyclerView;
-    View listItemView;
+    View listItemView, loadingIndicator;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        GET_NEWS_URL_TechCrunch = Config.TECHCRUNCH_URL + Config.API_KEY;
-        GET_NEWS_URL_TechRadar = Config.TECHRADAR_URL + Config.API_KEY ;
-        GET_NEWS_URL_HackerNews= Config.HACKERNEWS_URL + Config.API_KEY;
-        //Log.e("GET NEWS URL: ", GET_NEWS_URL_TechCrunch);
+        initViews(inflater, container);
 
-        al_news = new ArrayList<>();
-
-        bookmarksDbHelper = new NewsDbHelper(getContext());
-        techDbHelper = new NewsDbHelper(getContext());
-
-        recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-
-        listItemView = inflater.inflate(R.layout.item_tech, container, false);
-        View loadingIndicator = listItemView.findViewById(R.id.loading_indicator);
-        loadingIndicator.setVisibility(View.VISIBLE);
-
-        getTechNewsFromDatabase();
+        getHeadlinesFromDatabase();
 
         return recyclerView;
     }
 
-    public void getTechNewsFromDatabase(){
+    private void initViews(LayoutInflater inflater, ViewGroup container){
 
-        SQLiteDatabase db = techDbHelper.getReadableDatabase();
-        Cursor rs = db.rawQuery("SELECT * FROM techNews",null);
+        al_news = new ArrayList<>();
+        bookmarksDbHelper = new NewsDbHelper(getContext());
+        headlineNewsDbHelper = new NewsDbHelper(getContext());
+
+        listItemView = inflater.inflate(R.layout.item_headline, container, false);
+        loadingIndicator = listItemView.findViewById(R.id.loading_indicator);
+        recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+        loadingIndicator.setVisibility(View.VISIBLE);
+
+    }
+
+    public void getHeadlinesFromDatabase(){
+
+        SQLiteDatabase db = headlineNewsDbHelper.getReadableDatabase();
+        Cursor rs = db.rawQuery("SELECT * FROM headlineNews",null);
 
         if (rs.moveToFirst()) {
+
             while (!rs.isAfterLast()) {
 
                 String title = rs.getString(rs.getColumnIndex(NewsDbHelper.COLUMN_NEWS_TITLE));
@@ -89,14 +76,18 @@ public class TechFragment extends Fragment{
 
                 News currentNews = new News(title, description, publishedAt, url, urlToImage);
                 al_news.add(currentNews);
+
                 rs.moveToNext();
             }
         }
         rs.close();
 
-        adapter = new TechFragContentAdapter(recyclerView.getContext(), al_news);
+        adapter = new HeadLineFragContentAdapter(recyclerView.getContext(), al_news);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
+        recyclerView.setItemViewCacheSize(20);
+        recyclerView.setDrawingCacheEnabled(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
+
 }

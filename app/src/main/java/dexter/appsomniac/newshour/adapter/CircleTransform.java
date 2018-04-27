@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Adapter;
+package dexter.appsomniac.newshour.adapter;
 
 /**
  * Created by Saurabh on 03-09-2017.

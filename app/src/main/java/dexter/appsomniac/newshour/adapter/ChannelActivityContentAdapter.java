@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Adapter;
+package dexter.appsomniac.newshour.adapter;
 
 /**
  * Created by absolutelysaurabh on 23/8/17.
@@ -9,16 +9,14 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import dexter.appsomniac.newshour.Model.News;
+import dexter.appsomniac.newshour.model.News;
 import dexter.appsomniac.newshour.R;
-import dexter.appsomniac.newshour.ViewHolder.ChannelActivityViewHolder;
+import dexter.appsomniac.newshour.viewholder.ChannelActivityViewHolder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 

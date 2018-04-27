@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Activity;
+package dexter.appsomniac.newshour.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -10,15 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import dexter.appsomniac.newshour.Adapter.ChannelActivityContentAdapter;
+import dexter.appsomniac.newshour.adapter.ChannelActivityContentAdapter;
 import dexter.appsomniac.newshour.data.NewsDbHelper;
-import dexter.appsomniac.newshour.Config.Config;
-import dexter.appsomniac.newshour.Model.News;
+import dexter.appsomniac.newshour.config.Config;
+import dexter.appsomniac.newshour.model.News;
 import dexter.appsomniac.newshour.R;
 import com.bumptech.glide.Glide;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;

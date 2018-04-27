@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Base">
         <activity
-            android:name=".Activity.SplashScreenActivity"
+            android:name=".activity.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar">
             <intent-filter>
@@ -25,20 +25,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.DetailsActivity"
+            android:name=".activity.DetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.ChannelActivity"
+            android:name=".activity.ChannelActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.BookmarksActivity"
+            android:name=".activity.BookmarksActivity"
             android:label="Your Bookmarks"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.WebViewActivity"
+            android:name=".activity.WebViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/WithActionBar"
             />

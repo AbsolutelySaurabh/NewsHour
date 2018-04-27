@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Adapter;
+package dexter.appsomniac.newshour.adapter;
 
 /**
  * Created by absolutelysaurabh on 22/8/17.
@@ -12,15 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 
-import dexter.appsomniac.newshour.ClassFragments.TechFragment;
-import dexter.appsomniac.newshour.Model.News;
+import dexter.appsomniac.newshour.model.News;
 import dexter.appsomniac.newshour.R;
-import dexter.appsomniac.newshour.Util.Utils;
-import dexter.appsomniac.newshour.ViewHolder.TechFragViewHolder;
+import dexter.appsomniac.newshour.util.Utils;
+import dexter.appsomniac.newshour.viewholder.TechFragViewHolder;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 /**
  * Adapter to display recycler view.
@@ -61,7 +59,7 @@ public class TechFragContentAdapter extends RecyclerView.Adapter<TechFragViewHol
             e.printStackTrace();
         }
 
-        Log.e("position holder: ", String.valueOf(position));
+        Log.d("position holder: ", String.valueOf(position));
     }
 
     private void runEnterAnimation(View view) {

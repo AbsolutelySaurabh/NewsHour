@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.ViewHolder;
+package dexter.appsomniac.newshour.viewholder;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import dexter.appsomniac.newshour.Activity.DetailsActivity;
+import dexter.appsomniac.newshour.activity.DetailsActivity;
 import dexter.appsomniac.newshour.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;

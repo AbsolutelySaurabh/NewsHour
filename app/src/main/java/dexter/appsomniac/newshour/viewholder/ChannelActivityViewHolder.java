@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.ViewHolder;
+package dexter.appsomniac.newshour.viewholder;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,10 +17,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import dexter.appsomniac.newshour.Activity.DetailsActivity;
-import dexter.appsomniac.newshour.Activity.WebViewActivity;
+import dexter.appsomniac.newshour.activity.DetailsActivity;
+import dexter.appsomniac.newshour.activity.WebViewActivity;
 import dexter.appsomniac.newshour.data.NewsDbHelper;
-import dexter.appsomniac.newshour.Model.News;
+import dexter.appsomniac.newshour.model.News;
 import dexter.appsomniac.newshour.R;
 
 import java.util.ArrayList;

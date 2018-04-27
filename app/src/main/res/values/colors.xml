@@ -9,7 +9,6 @@
     <color name="colorPrimaryDark">#03353E</color>
     <color name="colorAccent">#00B0FF</color>
 
-
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGrey">#d2d3d5</color>
@@ -66,8 +65,5 @@
         <item>@color/dot_dark_screen3</item>
         <item>@color/dot_dark_screen4</item>
     </array>
-
-
-
 
 </resources>

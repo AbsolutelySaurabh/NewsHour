@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.ClassFragments;
+package dexter.appsomniac.newshour.classfragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import dexter.appsomniac.newshour.Activity.ChannelActivity;
+import dexter.appsomniac.newshour.activity.ChannelActivity;
 import dexter.appsomniac.newshour.R;
 public class ChannelFragment extends Fragment {
 
@@ -26,10 +26,17 @@ public class ChannelFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        return initViews(inflater, container);
+
+    }
+
+    private View initViews(LayoutInflater inflater, ViewGroup container){
+
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
         ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
+
         // Set padding for Tiles
         int tilePadding = getResources().getDimensionPixelSize(R.dimen.tile_padding);
         recyclerView.setPadding(tilePadding, tilePadding, tilePadding, tilePadding);
@@ -39,11 +46,9 @@ public class ChannelFragment extends Fragment {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView picture;
-        //public TextView name;
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.item_channels, parent, false));
             picture = (ImageView) itemView.findViewById(R.id.tile_picture);
-            //name = (TextView) itemView.findViewById(R.id.tile_title);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -65,11 +70,9 @@ public class ChannelFragment extends Fragment {
         // Set numbers of Tiles in RecyclerView.
         private static final int LENGTH = 16;
 
-       // private final String[] channelsName;
         private final Drawable[] channelsPictures;
         public ContentAdapter(Context context) {
             Resources resources = context.getResources();
-          //  channelsName = resources.getStringArray(R.array.places);
             TypedArray a = resources.obtainTypedArray(R.array.places_picture);
             channelsPictures = new Drawable[a.length()];
             for (int i = 0; i < channelsPictures.length; i++) {
@@ -86,7 +89,6 @@ public class ChannelFragment extends Fragment {
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
             holder.picture.setImageDrawable(channelsPictures[position % channelsPictures.length]);
-          //  holder.name.setText(channelsName[position % channelsName.length]);
         }
 
         @Override

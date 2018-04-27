@@ -1,8 +1,7 @@
-package dexter.appsomniac.newshour.ViewHolder;
+package dexter.appsomniac.newshour.viewholder;
 
 import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +18,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import dexter.appsomniac.newshour.Activity.DetailsActivity;
-import dexter.appsomniac.newshour.Activity.WebViewActivity;
+import dexter.appsomniac.newshour.activity.DetailsActivity;
+import dexter.appsomniac.newshour.activity.WebViewActivity;
 import dexter.appsomniac.newshour.data.NewsDbHelper;
-import dexter.appsomniac.newshour.Model.News;
+import dexter.appsomniac.newshour.model.News;
 import dexter.appsomniac.newshour.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package dexter.appsomniac.newshour.Util;
+package dexter.appsomniac.newshour.util;
 
 import android.content.Context;
 import android.content.res.Resources;
