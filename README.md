@@ -2,6 +2,7 @@
 <h1 align="center">
     NewsHour
   <br>
+  [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-for-android.svg)](https://forthebadge.com)
 </h1>
 <h3 align="center">Your one-stop destination to all news.</h3>
 <h4 align="center"> <i>Dedicated to news readers!</i></h4>
